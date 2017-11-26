@@ -1,4 +1,23 @@
-#ifndef DefWindow
+#ifndef DefWin
+#define DefWin
+
+#include <windows.h>
+#include <string>
+
+MSG message;
+HWND gateButton[8];
+HWND menuButton[8];
+HWND inputButton[12];
+HWND smallWindow;
+
+
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow);
+LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
+
+
+#endif
+
+/*#ifndef DefWindow
 #define DefWindow
 
 #include "element.h"
@@ -44,3 +63,4 @@ class CWindow
 };
 
 #endif
+*/

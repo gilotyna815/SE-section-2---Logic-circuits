@@ -1,4 +1,216 @@
-#include "window.h"
+#include <windows.h>
+#include <string>
+#include "WINDOW.h"
+
+
+
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
+{
+
+	// WYPE£NIANIE STRUKTURY
+	WNDCLASSEX wc;
+
+	wc.cbSize = sizeof(WNDCLASSEX);
+	wc.style = 0;
+	wc.lpfnWndProc = WndProc;
+	wc.cbClsExtra = 0;
+	wc.cbWndExtra = 0;
+	wc.hInstance = hInstance;
+	wc.hIcon = LoadIcon(NULL, IDI_APPLICATION);
+	wc.hCursor = LoadCursor(NULL, IDC_ARROW);
+	wc.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
+	wc.lpszMenuName = NULL;
+	wc.lpszClassName = L"Window Class";
+	wc.hIconSm = LoadIcon(NULL, IDI_APPLICATION);
+
+	// REJESTROWANIE KLASY OKNA
+	if (!RegisterClassEx(&wc))
+	{
+		MessageBox(NULL, L"Cannot register the window!", L"I'm sorry...",
+			MB_ICONEXCLAMATION | MB_OK);
+		return 1;
+	}
+
+	// TWORZENIE OKNA
+	HWND mainWind;
+
+	mainWind = CreateWindowEx(WS_EX_CLIENTEDGE, L"Window Class", L"Logic circuits", WS_OVERLAPPEDWINDOW,
+		CW_USEDEFAULT, CW_USEDEFAULT, 950, 720, NULL, NULL, hInstance, NULL);
+
+	if (mainWind == NULL)
+	{
+		MessageBox(NULL, L"Cannot create the window.", L":(", MB_ICONEXCLAMATION);
+		return 1;
+	}
+
+	ShowWindow(mainWind, nCmdShow); // Poka¿ okienko...
+	UpdateWindow(mainWind);
+
+
+	gateButton[0] = CreateWindowEx(0, L"BUTTON", L"NOT", WS_CHILD | WS_VISIBLE,
+		20, 130, 50, 50, mainWind, NULL, hInstance, NULL);
+	gateButton[1] = CreateWindowEx(0, L"BUTTON", L"AND", WS_CHILD | WS_VISIBLE,
+		20, 185, 50, 50, mainWind, NULL, hInstance, NULL);
+	gateButton[2] = CreateWindowEx(0, L"BUTTON", L"NAND", WS_CHILD | WS_VISIBLE,
+		20, 240, 50, 50, mainWind, NULL, hInstance, NULL);
+	gateButton[3] = CreateWindowEx(0, L"BUTTON", L"OR", WS_CHILD | WS_VISIBLE,
+		20, 300, 50, 50, mainWind, NULL, hInstance, NULL);
+	gateButton[4] = CreateWindowEx(0, L"BUTTON", L"NOR", WS_CHILD | WS_VISIBLE,
+		20, 355, 50, 50, mainWind, NULL, hInstance, NULL);
+	gateButton[5] = CreateWindowEx(0, L"BUTTON", L"XOR", WS_CHILD | WS_VISIBLE,
+		20, 410, 50, 50, mainWind, NULL, hInstance, NULL);
+	gateButton[6] = CreateWindowEx(0, L"BUTTON", L"1", WS_CHILD | WS_VISIBLE,
+		20, 470, 50, 50, mainWind, NULL, hInstance, NULL);
+	gateButton[7] = CreateWindowEx(0, L"BUTTON", L"delete", WS_CHILD | WS_VISIBLE,
+		20, 580, 50, 50, mainWind, NULL, hInstance, NULL);
+
+	menuButton[0] = CreateWindowEx(0, L"BUTTON", L"Load", WS_CHILD | WS_VISIBLE,
+		110, 35, 100, 40, mainWind, NULL, hInstance, NULL);
+	menuButton[1] = CreateWindowEx(0, L"BUTTON", L"New", WS_CHILD | WS_VISIBLE,
+		225, 35, 100, 40, mainWind, NULL, hInstance, NULL);
+	menuButton[2] = CreateWindowEx(0, L"BUTTON", L"Prev", WS_CHILD | WS_VISIBLE,
+		340, 35, 100, 40, mainWind, NULL, hInstance, NULL);
+	menuButton[3] = CreateWindowEx(0, L"BUTTON", L"Next", WS_CHILD | WS_VISIBLE,
+		455, 35, 100, 40, mainWind, NULL, hInstance, NULL);
+	menuButton[4] = CreateWindowEx(0, L"BUTTON", L"Save", WS_CHILD | WS_VISIBLE,
+		570, 35, 100, 40, mainWind, NULL, hInstance, NULL);
+	menuButton[5] = CreateWindowEx(0, L"BUTTON", L"Save as", WS_CHILD | WS_VISIBLE,
+		685, 35, 100, 40, mainWind, NULL, hInstance, NULL);
+	menuButton[6] = CreateWindowEx(0, L"BUTTON", L"Info", WS_CHILD | WS_VISIBLE,
+		800, 35, 100, 40, mainWind, NULL, hInstance, NULL);
+
+	inputButton[0] = CreateWindowEx(0, L"BUTTON", L"a", WS_CHILD | WS_VISIBLE,
+		110, 100, 25, 25, mainWind, NULL, hInstance, NULL);
+	inputButton[1] = CreateWindowEx(0, L"BUTTON", L"b", WS_CHILD | WS_VISIBLE,
+		135, 100, 25, 25, mainWind, NULL, hInstance, NULL);
+	inputButton[2] = CreateWindowEx(0, L"BUTTON", L"c", WS_CHILD | WS_VISIBLE,
+		160, 100, 25, 25, mainWind, NULL, hInstance, NULL);
+	inputButton[3] = CreateWindowEx(0, L"BUTTON", L"d", WS_CHILD | WS_VISIBLE,
+		185, 100, 25, 25, mainWind, NULL, hInstance, NULL);
+	inputButton[4] = CreateWindowEx(0, L"BUTTON", L"e", WS_CHILD | WS_VISIBLE,
+		210, 100, 25, 25, mainWind, NULL, hInstance, NULL);
+	inputButton[5] = CreateWindowEx(0, L"BUTTON", L"f", WS_CHILD | WS_VISIBLE,
+		235, 100, 25, 25, mainWind, NULL, hInstance, NULL);
+
+	inputButton[6] = CreateWindowEx(0, L"BUTTON", L"", WS_CHILD | WS_VISIBLE,
+		110, 580, 25, 25, mainWind, NULL, hInstance, NULL);
+	inputButton[7] = CreateWindowEx(0, L"BUTTON", L"", WS_CHILD | WS_VISIBLE,
+		135, 580, 25, 25, mainWind, NULL, hInstance, NULL);
+	inputButton[8] = CreateWindowEx(0, L"BUTTON", L"", WS_CHILD | WS_VISIBLE,
+		160, 580, 25, 25, mainWind, NULL, hInstance, NULL);
+	inputButton[9] = CreateWindowEx(0, L"BUTTON", L"", WS_CHILD | WS_VISIBLE,
+		185, 580, 25, 25, mainWind, NULL, hInstance, NULL);
+	inputButton[10] = CreateWindowEx(0, L"BUTTON", L"", WS_CHILD | WS_VISIBLE,
+		210, 580, 25, 25, mainWind, NULL, hInstance, NULL);
+	inputButton[11] = CreateWindowEx(0, L"BUTTON", L"", WS_CHILD | WS_VISIBLE,
+		235, 580, 25, 25, mainWind, NULL, hInstance, NULL);
+
+	smallWindow = CreateWindowEx(0, L"STATIC", NULL, WS_CHILD | WS_VISIBLE |
+		SS_LEFT, 95, 125, 800, 460, mainWind, NULL, hInstance, NULL);
+
+
+	// Pêtla komunikatów
+	while (GetMessage(&message, NULL, 0, 0))
+	{
+		TranslateMessage(&message);
+		DispatchMessage(&message);
+	}
+	return message.wParam;
+}
+
+// OBS£UGA ZDARZEÑ
+LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
+{
+	switch (msg)
+	{
+	case WM_CLOSE:
+		DestroyWindow(hwnd);
+		break;
+
+	case WM_DESTROY:
+		PostQuitMessage(0);
+		break;
+	case WM_COMMAND:
+		if ((HWND)lParam == gateButton[0])
+		{
+			//to do - assign button functions
+		}
+		else if ((HWND)lParam == gateButton[1])
+		{
+
+		}
+		else if ((HWND)lParam == gateButton[2])
+		{
+
+		}
+		else if ((HWND)lParam == gateButton[3])
+		{
+
+		}
+		else if ((HWND)lParam == gateButton[4])
+		{
+
+		}
+		else if ((HWND)lParam == gateButton[5])
+		{
+
+		}
+		else if ((HWND)lParam == gateButton[6])
+		{
+
+		}
+		else if ((HWND)lParam == gateButton[7])
+		{
+
+		}
+		else if ((HWND)lParam == menuButton[0])
+		{
+
+		}
+		else if ((HWND)lParam == menuButton[1])
+		{
+
+		}
+		else if ((HWND)lParam == menuButton[2])
+		{
+
+		}
+		else if ((HWND)lParam == menuButton[3])
+		{
+
+		}
+		else if ((HWND)lParam == menuButton[4])
+		{
+
+		}
+		else if ((HWND)lParam == menuButton[5])
+		{
+
+		}
+		else if ((HWND)lParam == menuButton[6])
+		{
+
+		}
+		else if ((HWND)lParam == menuButton[7])
+		{
+
+		}
+
+		//MessageBox(hwnd, L"Nacisn¹³eœ przycisk!", L"Ha!", MB_ICONINFORMATION);
+		//SetWindowText(textGenerated, L"Napis");
+		//example: generateBg(smallWindow);
+		//cant use switch cuz that'd need constant val
+
+		break;
+
+	default:
+		return DefWindowProc(hwnd, msg, wParam, lParam);
+	}
+
+	return 0;
+}
+
+/*#include "window.h"
 #include "smallwin.h"
 #include "constbus.h"
 #include "inbus.h"
@@ -758,4 +970,4 @@ void CWindow::Error(int ErrorNum)
 	}
 	closegraph();
 	exit(1);
-}
+}*/
