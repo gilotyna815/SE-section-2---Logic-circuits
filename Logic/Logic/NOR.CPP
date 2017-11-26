@@ -1,5 +1,6 @@
 #include "nor.h"
 #include "gate.h"
+#include "element.h"
 
 CNor::CNor(int X,int Y,int Colour)
 {
@@ -17,25 +18,6 @@ CNor::CNor(int X,int Y,int Colour)
 	Movable=yes;
 }
 
-void CNor::DrawElem(int Colour)
-{
-	if(Colour==0)
-	{
-		switch(Output)
-		{
-			case low:Colour=LowColour;break;
-			case high:Colour=HighColour;break;
-			case error:Colour=ErrorColour;break;
-		}
-	}
-	setcolor(Colour);
-	arc(X1+3,Y1+14,315,54,9);//ˆuk z lewej
-	line(X1+3,Y1+12,X1+10,Y1+12);//we g.
-	line(X1+3,Y1+17,X1+10,Y1+17);//we d.
-	arc(X1+8,Y1+14,270,90,8);//ˆuk z prawej
-	circle(X1+18,Y1+14,2);//negacja
-	line(X1+21,Y1+14,X1+24,Y1+14);//wyj˜cie
-}
 
 TOutput CNor::GetOutput(int AskElemNum,int MaxNum)
 {
@@ -52,8 +34,8 @@ TOutput CNor::GetOutput(int AskElemNum,int MaxNum)
 			TOutput TmpValue=TabPrevElem[i]->GetOutput(AskElemNum+1,MaxNum);
 			if(TmpValue==error)
 				Output=error;
-			else Value+=TmpValue;
-			if(Value>1) Value=1;
+			else Value=(TOutput)(Value+TmpValue);
+			if(Value>1) Value=(TOutput)1;
 		}
 	}
 	if(Value==low) Value=high;

@@ -39,6 +39,7 @@
 #define MaxPrevElemNum 2
 #define MaxSmallWinLinesNum 4
 
+enum TOutput { low = 0, high = 1, error = -1 };
 enum TElementType{and,or,not,nor,nand,xor,output,wire,junction,inbus,cbus};
 
 void InitGraph(char *path="f:/borlandc/bgi");

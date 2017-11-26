@@ -12,7 +12,6 @@ class CElement
 	int Y2;
 	int OutNum;
 	int InNum;
-	enum TOutput{low=0,high=1,error=-1};
 	enum TMovable{yes,no};
 	TOutput Output;
 	TMovable Movable;
@@ -20,7 +19,7 @@ class CElement
 	CElement*TabPrevElem[MaxPrevElemNum];
 	int IsAreaFree(CElement**TabElem,int NumOfElem);
  public:
-	virtual void DrawElem(int Colour=0)=0;
+	//virtual void DrawElem(int Colour=0)=0;
 	virtual TOutput GetOutput(int AskElemNum,int MaxNum)=0;
 	virtual char Move(int X,int Y,CElement**TabElem,int NumOfElem);
 	virtual void MoveBeg(int X,int Y);
