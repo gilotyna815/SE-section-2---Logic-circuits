@@ -43,19 +43,20 @@ void Control()
 	char IsPrev;//flaga m¢wi¥ca, czy istnieje okno wcze˜niejsze
 	char IsNext;//flaga m¢wi¥ca, czy istnieje okno nast©pne
 	int TabWin[MaxWinNum];//tablica flag m¢wi¥cych, czy okno istnieje
+	int i;
 	for(int i=0;i<MaxWinNum;i++) TabWin[i]=0;
 	TabWin[0]=1;
 	do
 	{
 		IsPrev=0;
 		IsNext=0;
-		for(i=0;i<CurrentWinNum;i++)
+		for(int i=0;i<CurrentWinNum;i++)
 			if(TabWin[i]==1)
 			{
 				IsPrev=1;
 				break;
 			}
-		for(i=CurrentWinNum+1;i<MaxWinNum;i++)
+		for(int i=CurrentWinNum+1;i<MaxWinNum;i++)
 			if(TabWin[i]==1)
 			{
 				IsNext=1;
@@ -70,6 +71,7 @@ void Control()
 			TotalWinNum--;
 			if(NewPossib==0) NewPossib=1;
 				//skasowane zostaˆo jakie˜ okno, wi©c mo¾na utworzy† nowe okno
+			int i;
 			for(i=CurrentWinNum+1;i<MaxWinNum;i++)
 				if(TabWin[i]==1)
 				{
@@ -88,6 +90,7 @@ void Control()
 		else
 		if(WinResult==-1)//wy˜wietlone ma by† okno poprzednie
 		{
+			
 			for(i=CurrentWinNum-1;i>=0;i--)
 				if(TabWin[i]==1) break;
 			CurrentWinNum=i;
@@ -96,6 +99,7 @@ void Control()
 		else
 		if(WinResult==1)//wy˜wietlone ma by† okno nast©pne
 		{
+			
 			for(i=CurrentWinNum+1;i<MaxWinNum;i++)
 				if(TabWin[i]==1) break;
 			CurrentWinNum=i;

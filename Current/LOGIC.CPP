@@ -44,7 +44,8 @@ void Control()
 	char IsPrev;//flaga m¢wi¥ca, czy istnieje okno wcze˜niejsze
 	char IsNext;//flaga m¢wi¥ca, czy istnieje okno nast©pne
 	int TabWin[MaxWinNum];//tablica flag m¢wi¥cych, czy okno istnieje
-	for(int i=0;i<MaxWinNum;i++) TabWin[i]=0;
+	int i;
+	for(i=0;i<MaxWinNum;i++) TabWin[i]=0;
 	TabWin[0]=1;
 	do
 	{

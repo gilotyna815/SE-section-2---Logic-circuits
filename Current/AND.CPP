@@ -10,7 +10,7 @@ CAnd::CAnd(int X,int Y,int Colour)
 	OutNum=1;
 	for(int i=0;i<InNum;i++)
 		TabPrevElem[i]=NULL;
-	for(i=0;i<OutNum;i++)
+	for(int i=0;i<OutNum;i++)
 		TabNextElem[i]=NULL;
 	Output=error;
 	Movable=yes;

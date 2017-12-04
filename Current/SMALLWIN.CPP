@@ -207,7 +207,7 @@ void CSmallWindow::DrawSmallWin()
 		line(X1+151,Y2-39,X1+151,Y2-56);
 		line(X1+151,Y2-56,X1+49,Y2-56);
 	}
-	for(i=0;i<ButtonNum;i++)
+	for(int i=0;i<ButtonNum;i++)
 		TabBut[i]->DrawButton();
 }
 

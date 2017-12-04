@@ -10,7 +10,7 @@ class CInBus:public CElement
 {
 	CMenuButton*Button[2];
 	char Name;
-	enum {true,false}Visible;
+	bool Visible;
 	int JunctionNum;
 	CJunction*TabJunction[MaxBusJunctionNum];
  public:

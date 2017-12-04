@@ -55,7 +55,7 @@ int CElement::IsAreaFree(CElement**TabElem,int NumOfElem)
 	int X=X1;
 	int Y=Y1;
 	if(TabElem[ElemNum]->ElementType()==wire) return 0;//wyst¥piˆ bˆ¥d
-	for(i=0;i<NumOfElem;i++)
+	for(int i=0;i<NumOfElem;i++)
 	{
 		if(i==ElemNum) i++;//nie bada si© tego samego elementu
 		if(i>=NumOfElem) break;//zabezpieczenie przed przekroczeniem tabeli
@@ -147,7 +147,7 @@ char CElement::Move(int X,int Y,CElement**TabElem,int NumOfElem)
 				return 0;
 			}
 		}
-	for(i=0;i<OutNum;i++)
+	for(int i=0;i<OutNum;i++)
 		if(TabNextElem[i]!=NULL)
 		{
 			int TmpX=TabNextElem[i]->GetXCorner();
@@ -173,7 +173,7 @@ char CElement::Move(int X,int Y,CElement**TabElem,int NumOfElem)
 						TabPrevElem[j]->Autoformat(TabElem,NumOfElem);
 					}//poniewa¾ kt¢rej˜ z linii nie daˆo si© sformatowa†,
 					//trzeba przywr¢ci† poˆo¾enie wcze˜niej sformatowanych linii
-				for(j=InNum-1;j>=0;j--)
+				for(int j=InNum-1;j>=0;j--)
 					if(TabPrevElem[j]!=NULL)
 					{
 						int TmpX=TabPrevElem[j]->GetXCorner(1);
@@ -216,7 +216,8 @@ char CElement::LinkPrevElem(CElement*PrevElem,int X,int Y)
 	char Key=0;
 	int Hight=(Y2-Y1)/InNum;
 	if((Y2-Y1)/InNum) Key=1;//wysoko˜† jest liczb¥ nieparzyst¥
-	for(int i=0;i<InNum;i++)
+	int i;
+	for(i=0;i<InNum;i++)
 	{
 		if(Key!=0)
 		{
@@ -277,7 +278,8 @@ int CElement::DeleteConnections(CElement**TabElem,int NumOfElem,char Main)
 	int DelElemNum=1;//trzeba wliczy† tak¾e ten element
 	//funkcja wirtualna jest zdefiniowana w tym miejscu dla bramek i wyj˜†,
 	//druty i w©zˆy maj¥ inne ciaˆo funkcji
-	for(int i=0;i<NumOfElem;i++)
+	int i;
+	for(i=0;i<NumOfElem;i++)
 		if(this==TabElem[i]) break;//znalezienie indeksu bie¾¥cego elementu
 	for(int j=i;j<NumOfElem;j++)
 		TabElem[j]=TabElem[j+1];//wyrzucenie elementu z tabeli
@@ -336,7 +338,8 @@ char CElement::SaveElement(CElement**TabElem,int NumOfElem,
 			int PrevElemPos;
 			if(TabPrevElem[i]!=NULL)
 			{
-				for(int j=0;j<NumOfElem;j++)
+				int j;
+				for(j=0;j<NumOfElem;j++)
 					if(TabElem[j]==TabPrevElem[i]) break;
 						//ustalenie indeksu poprzednich element¢w
 				if(j>=NumOfElem) return 0;//bˆ¥d - element nie zostaˆ znaleziony
@@ -345,12 +348,13 @@ char CElement::SaveElement(CElement**TabElem,int NumOfElem,
 			else PrevElemPos=-1;//nie ma elementu poprzedniego na i-tej pozycji
 			fwrite(&PrevElemPos,sizeof(int),1,File);
 		}
-		for(i=0;i<OutNum;i++)
+		for(int i=0;i<OutNum;i++)
 		{
 			int NextElemPos;
 			if(TabNextElem[i]!=NULL)
 			{
-				for(int j=0;j<NumOfElem;j++)
+				int j;
+				for(j=0;j<NumOfElem;j++)
 					if(TabElem[j]==TabNextElem[i]) break;
 						//ustalenie indeksu poprzednich element¢w
 				if(j>=NumOfElem) return 0;//bˆ¥d - element nie zostaˆ znaleziony
@@ -398,7 +402,7 @@ char CElement::LoadElement(CElement**TabElem,int NumOfElem,
 			else TabPrevElem[i]=TabElem[PrevElemPos];
 				//element byˆ poˆ¥czony z elementem o odczytanym indeksie
 		}
-		for(i=0;i<OutNum;i++)
+		for(int i=0;i<OutNum;i++)
 		{
 			int NextElemPos;
 			if(feof(File)) return 0;

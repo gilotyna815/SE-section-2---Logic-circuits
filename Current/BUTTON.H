@@ -10,9 +10,8 @@ class CButton
 	int Y2;
 	int ButtonColour;
 	int DrawingColour;
-	enum TInsert{true,false};
 	enum TActive{off,on};
-	TInsert Insert;
+	bool Insert;
 	TActive Active;
  public:
 	virtual void DrawButton()=0;

@@ -9,7 +9,7 @@ CJunction::CJunction(int X,int Y,int Colour)
 	OutNum=1;
 	for(int i=0;i<InNum;i++)
 		TabPrevElem[i]=NULL;
-	for(i=0;i<OutNum;i++)
+	for(int i=0;i<OutNum;i++)
 		TabNextElem[i]=NULL;
 	Output=error;
 	Movable=yes;
@@ -74,7 +74,8 @@ char CJunction::LinkNextElem(CElement*NextElem,int X,int Y)
 	if(NextElem->ElementType()!=wire) return 0;
 		//w©zeˆ mo¾e by† poˆ¥czony tylko z drutem
 	char OK=0;
-	for(int i=0;i<OutNum;i++)
+	int i;
+	for(i=0;i<OutNum;i++)
 		if(TabNextElem[i]==NULL)
 		{
 			OK=1;

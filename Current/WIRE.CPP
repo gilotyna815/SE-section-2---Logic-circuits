@@ -17,7 +17,7 @@ CWire::CWire(int X,int Y,int Colour,char FromJunction,CElement*PrevWire)
 	OutNum=1;
 	for(int i=0;i<InNum;i++)
 		TabPrevElem[i]=NULL;
-	for(i=0;i<OutNum;i++)
+	for(int i=0;i<OutNum;i++)
 		TabNextElem[i]=NULL;
 	Output=error;
 	Movable=no;
@@ -395,7 +395,7 @@ char CWire::Check(CElement**TabElem,int NumOfElem)
 				}while(X>TabBreakpoints[i+1][0]);
 			}
 	}
-	for(i=1;i<BreakpointsNum-1;i++)
+	for(int i=1;i<BreakpointsNum-1;i++)
 		for(int j=0;j<NumOfElem;j++)
 		{
 			if(this==TabElem[j]) j++;//nie bada si© tego samego elementu
@@ -405,7 +405,7 @@ char CWire::Check(CElement**TabElem,int NumOfElem)
 					return 0;
 			//punkt zaˆamania nie mo¾e le¾e† na ¾adnym z element¢w
 		}
-	for(i=0;i<BreakpointsNum-1;i++)
+	for(int i=0;i<BreakpointsNum-1;i++)
 	{
 		if(TabBreakpoints[i][0]!=TabBreakpoints[i+1][0]&&
 			 TabBreakpoints[i][1]!=TabBreakpoints[i+1][1])
@@ -439,7 +439,7 @@ char CWire::FormatJunctions(CElement**TabElem,int NumOfElem)
 		PrevJunctionPos[i][0]=TabJunction[i]->GetXCorner();
 		PrevJunctionPos[i][1]=TabJunction[i]->GetYCorner();
 	}
-	for(i=0;i<JunctionNum;i++)
+	for(int i=0;i<JunctionNum;i++)
 	{              	
 		int TmpX=PrevJunctionPos[i][0];
 		int TmpY=PrevJunctionPos[i][1];
@@ -456,7 +456,7 @@ char CWire::FormatJunctions(CElement**TabElem,int NumOfElem)
 				TabDist[j]=
 						(long int)(TmpY-TabBreakpoints[j][1])*(TmpY-TabBreakpoints[j][1]);
 		}
-		for(j=BreakpointsNum-1;j<2*BreakpointsNum-1;j++)
+		for(int j=BreakpointsNum-1;j<2*BreakpointsNum-1;j++)
 			TabDist[j]=(long int)(TmpX-TabBreakpoints[j-BreakpointsNum+1][0])*
 								 (long int)(TmpX-TabBreakpoints[j-BreakpointsNum+1][0])+
 								 (long int)(TmpY-TabBreakpoints[j-BreakpointsNum+1][1])*
@@ -466,7 +466,7 @@ char CWire::FormatJunctions(CElement**TabElem,int NumOfElem)
 		{
 			MinValue=100000;
 			OK=0;
-			for(j=0;j<2*BreakpointsNum-1;j++)
+			for(int j=0;j<2*BreakpointsNum-1;j++)
 				if(TabDist[j]<MinValue)
 				{
 					MinValue=TabDist[j];
@@ -614,7 +614,7 @@ char CWire::FormatJunctions(CElement**TabElem,int NumOfElem)
 		}while(!OK&&!End);
 		if(!OK)//nie udaˆo si© sformatowa† w©zˆa
 		{
-			for(j=JunctionNum-1;j>=0;j--)
+			for(int j=JunctionNum-1;j>=0;j--)
 				TabJunction[j]->Move(PrevJunctionPos[j][0],PrevJunctionPos[j][1],
 														 TabElem,NumOfElem);//powr¢t w©zˆ¢w
 																								//na dawne pozycje
@@ -690,7 +690,7 @@ char CWire::Autoformat(CElement**TabElem,int NumOfElem)
 		//zaˆamaä
 	if(X1==X2||Y1==Y2)
 		if(Check(TabElem,NumOfElem)&&FormatJunctions(TabElem,NumOfElem)) return 1;
-	for(i=3;i<=MaxBreakpointsNum;i++)
+	for(int i=3;i<=MaxBreakpointsNum;i++)
 	{
 		TabBreakpoints[BreakpointsNum][0]=X2;
 		TabBreakpoints[BreakpointsNum][1]=Y2;
@@ -698,7 +698,7 @@ char CWire::Autoformat(CElement**TabElem,int NumOfElem)
 		if(FormatLine(i,TabElem,NumOfElem)) return 1;
 	}
 	BreakpointsNum=TmpBreakpointsNum;
-	for(i=0;i<BreakpointsNum;i++)
+	for(int i=0;i<BreakpointsNum;i++)
 	{
 		TabBreakpoints[i][0]=TmpTabBreakpoints[i][0];
 		TabBreakpoints[i][1]=TmpTabBreakpoints[i][1];
@@ -742,7 +742,7 @@ char CWire::LinkNextElem(CElement*NextElem,int X,int Y)
 	int MinY;
 	int MaxY;
 	if(JunctionNum>=MaxJunctionNum) return 0;
-	for(i=0;i<BreakpointsNum-1;i++)
+	for(int i=0;i<BreakpointsNum-1;i++)
 	{
 		if(TabBreakpoints[i][0]<TabBreakpoints[i+1][0])
 		{
@@ -797,7 +797,7 @@ char CWire::DelNextElem(CElement*DelElem)
 			TabNextElem[i]=NULL;
 			return 1;
 		}
-	for(i=0;i<JunctionNum;i++)
+	for(int i=0;i<JunctionNum;i++)
 	{
 		char Deleting=TabJunction[i]->DelNextElem(DelElem);
 		if(Deleting==2)
@@ -816,7 +816,8 @@ char CWire::DelNextElem(CElement*DelElem)
 int CWire::DeleteConnections(CElement**TabElem,int NumOfElem,char Main)
 {
 	int DelElemNum=1;//trzeba wliczy† tak¾e ten element
-	for(int i=0;i<NumOfElem;i++)
+	int i;
+	for(i=0;i<NumOfElem;i++)
 		if(this==TabElem[i]) break;//znalezienie indeksu bie¾¥cego elementu
 	for(int j=i;j<NumOfElem;j++)
 		TabElem[j]=TabElem[j+1];//wyrzucenie elementu z tabeli
@@ -852,7 +853,7 @@ char CWire::SaveElement(CElement**TabElem,int NumOfElem,FILE*File,char Phase)
 			fwrite(&TabBreakpoints[i][1],sizeof(int),1,File);
 		}
 		fwrite(&JunctionNum,sizeof(int),1,File);
-		for(i=0;i<JunctionNum;i++)
+		for(int i=0;i<JunctionNum;i++)
 			if(!TabJunction[i]->SaveElement(TabElem,NumOfElem,File,1)) return 0;
 				//zachowanie w©zˆ¢w w pierwszej fazie
 	}
@@ -861,7 +862,8 @@ char CWire::SaveElement(CElement**TabElem,int NumOfElem,FILE*File,char Phase)
 		int PrevElemPos;
 		if(TabPrevElem[0]!=NULL)
 		{
-			for(int j=0;j<NumOfElem;j++)
+			int j;
+			for(j=0;j<NumOfElem;j++)
 				if(TabElem[j]==TabPrevElem[0]) break;
 					//ustalenie indeksu poprzedniego elementu
 			if(j>=NumOfElem) return 0;//bˆ¥d - element nie zostaˆ znaleziony
@@ -873,7 +875,8 @@ char CWire::SaveElement(CElement**TabElem,int NumOfElem,FILE*File,char Phase)
 		int NextElemPos;
 		if(TabNextElem[0]!=NULL)
 		{
-			for(int j=0;j<NumOfElem;j++)
+			int j;
+			for(j=0;j<NumOfElem;j++)
 				if(TabElem[j]==TabNextElem[0]) break;
 					//ustalenie indeksu poprzedniego elementu
 			if(j>=NumOfElem) return 0;//bˆ¥d - element nie zostaˆ znaleziony
@@ -913,7 +916,7 @@ char CWire::LoadElement(CElement**TabElem,int NumOfElem,
 		if(feof(File)) return 0;
 		fread(&JunctionNum,sizeof(int),1,File);
 		if(JunctionNum>MaxJunctionNum) return 0;
-		for(i=0;i<JunctionNum;i++)
+		for(int i=0;i<JunctionNum;i++)
 		{
 			char Type;
 			if(feof(File)) return 0;

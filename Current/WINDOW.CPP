@@ -33,7 +33,8 @@ CWindow::CWindow(int Number,char IsPrev,char IsNext,char NewPossib,char IsNew)
 	TabElem[5]=new CInBus(86,45,'d');
 	TabElem[6]=new CInBus(101,45,'e');
 	TabElem[7]=new CInBus(116,45,'f');
-	for(i=0;i<ButNum;i++)
+	//for(i=0;i<ButNum;i++)
+	for (int i = 0; i<ButNum; i++)
 		TabBut[i]=NULL;
 	TabBut[0]=new CMenuButton("Load",30,22,90,39);
 	TabBut[1]=new CMenuButton("New",100,22,160,39);
@@ -49,7 +50,7 @@ CWindow::CWindow(int Number,char IsPrev,char IsNext,char NewPossib,char IsNew)
 	TabBut[8]=new CMenuButton("Move",170,42,370,59);
 		//stworzenie przycisk¢w menu
 	unsigned ImageSize=imagesize(2,61,28,90);//rozmiar jest staˆy
-	for(i=0;i<ButNum-MenuButNum;i++) ImageTab[i]=new [ImageSize];
+	for(int i=0;i<ButNum-MenuButNum;i++) ImageTab[i]=new [ImageSize];
 	TabBut[MenuButNum]=new CModeButton(and,2,61,28,90);
 	TabBut[MenuButNum]->DrawButton();
 	getimage(2,61,28,90,ImageTab[0]);
@@ -78,7 +79,7 @@ CWindow::CWindow(int Number,char IsPrev,char IsNext,char NewPossib,char IsNew)
 	outtextxy(107,160,"Linking");
 	getimage(100,155,168,170,ImageTab[NumberOfImages-1]);
 		//ikona ˆ¥czenia element¢w jest ostatnia w tablicy
-	for(i=0;i<ButNum-MenuButNum;i++)
+	for(int i=0;i<ButNum-MenuButNum;i++)
 	{
 		putimage(0,0,ImageTab[i],4);
 		getimage(0,0,26,29,ImageTab[i]);
@@ -106,11 +107,11 @@ CWindow::~CWindow()
 {
 	for(int i=0;i<NumOfElem;i++)
 		delete TabElem[i];
-	for(i=0;i<=MenuButNum+6;i++)
+	for(int i=0;i<=MenuButNum+6;i++)
 		delete TabBut[i];
 	if(StandardPath!=NULL)
 		delete StandardPath;
-	for(i=0;i<ButNum-MenuButNum+1;i++) delete ImageTab[i];
+	for(int i=0;i<ButNum-MenuButNum+1;i++) delete ImageTab[i];
 }
 
 char CWindow::Work()
@@ -157,20 +158,20 @@ void CWindow::React(int X,int Y)
 	intr(0x33,&reg);//schowanie kursora
 	for(int i=0;i<NumOfElem;i++)
 		TabElem[i]->GetOutput(0,NumOfElem);
-	for(i=0;i<NumOfElem;i++)
+	for(int i=0;i<NumOfElem;i++)
 		TabElem[i]->DrawElem();
 		//od˜wierzenie element¢w
 	if(NumOfElem>=MaxNumOfElem)
 	{
 		TabBut[MenuButNum-1]->ChangeText("Move");
 		Mode=block;
-		for(i=MenuButNum-1;i<ButNum;i++)
+		for(int i=MenuButNum-1;i<ButNum;i++)
 			TabBut[i]->SetActivity(0);
 	}//zablokowanie klawiszy-za duzo element¢w
 	else if(Mode==block)
 	{
 		Mode=move;
-		for(i=MenuButNum-1;i<ButNum;i++)
+		for(int i=MenuButNum-1;i<ButNum;i++)
 			TabBut[i]->SetActivity(1);
 	}//odlokowanie klawiszy - mo¾na tworzy† nowe elementy
 	reg.r_ax=0x1;
@@ -348,8 +349,7 @@ char CWindow::Load(char*Path)
 	}
 	if(Path==NULL) return 0;
 	FILE*File=NULL;
-	if((File=fopen(Path,"rb"))==NULL)
-		//otwarcie pliku do odczytu
+	if((File=fopen(Path,"rb"))==NULL) //otwarcie pliku do odczytu
 	{
 		delete Path;
 		return -1;
@@ -471,7 +471,7 @@ char CWindow::Save(char*Path)
 	for(int i=0;i<NumOfElem;i++)
 		if(!TabElem[i]->SaveElement(TabElem,NumOfElem,File,1)) return 0;
 				//zachowanie ka¾dego elementu w pierwszej fazie
-	for(i=0;i<NumOfElem;i++)
+	for(int i=0;i<NumOfElem;i++)
 		if(!TabElem[i]->SaveElement(TabElem,NumOfElem,File,2)) return 0;
 				//zachowanie ka¾dego elementu w drugiej fazie
 	fclose(File);
@@ -492,15 +492,24 @@ void CWindow::Info()
 	TabText[2]=new char[40];
 	TabText[3]=new char[40];
 	strcpy(TabText[0],"A");
-	for(int i=0;i<5;i++) TabText[1][i]=' ';
-	TabText[1][i]='\x0';
-	strcat(TabText[1],"B");
-	for(i=0;i<5;i++) TabText[2][i]=' ';
-	TabText[2][i]='\x0';
-	strcat(TabText[2],"C");
-	for(i=0;i<5;i++) TabText[3][i]=' ';
-	TabText[3][i]='\x0';
-	strcat(TabText[3],"D");
+	for (int i = 0; i < 5; i++)
+	{
+		TabText[1][i] = ' ';
+		TabText[1][i] = '\x0';
+		strcat(TabText[1], "B");
+	}
+	for (int i = 0; i < 5; i++)
+	{
+		TabText[2][i] = ' ';
+		TabText[2][i] = '\x0';
+		strcat(TabText[2], "C");
+	}
+	for (int i = 0; i < 5; i++)
+	{
+		TabText[3][i] = ' ';
+		TabText[3][i] = '\x0';
+		strcat(TabText[3], "D");
+	}
 	CSmallWindow*Window=new CSmallWindow(155,130,470,0,"Information",
 																			 TabText,0,1);
 	Window->Work();
