@@ -18,7 +18,7 @@ CModeButton::CModeButton(TElementType ButtonType,int X1,int Y1,int X2, int Y2)
 	DrawingColour=16;
 	ButtonColour=FrameColour;
 	Insert=false;
-	Active=on;
+	Active=true;
 	ButtonElement=NULL;
 	switch(ButtonType)
 	{
@@ -40,13 +40,14 @@ CModeButton::~CModeButton()
 
 void CModeButton::DrawButton()
 {
-	setcolor(LineColour);
-	line(X1,Y1,X2,Y1);
-	line(X2,Y1,X2,Y2);
-	line(X2,Y2,X1,Y2);
-	line(X1,Y2,X1,Y1);
-	setfillstyle(1,ButtonColour);
-	bar(X1+1,Y1+1,X2-1,Y2-1);
+	//setcolor(LineColour);	todo
+	drawLine(GetDC(GetActiveWindow()),X1,Y1,X2,Y1);
+	drawLine(GetDC(GetActiveWindow()),X2,Y1,X2,Y2);
+	drawLine(GetDC(GetActiveWindow()),X2,Y2,X1,Y2);
+	drawLine(GetDC(GetActiveWindow()),X1,Y2,X1,Y1);
+	//	setfillstyle(1,ButtonColour);		//todo
+	//bar(X1+1,Y1+1,X2-1,Y2-1);
+	drawLine(GetDC(GetActiveWindow()),X1+1,Y1+1,X2-1,Y2-1);
 	ButtonElement->DrawElem(DrawingColour);
 }
 
@@ -55,6 +56,6 @@ void CModeButton::ChangeText(char*Text)
 
 int CModeButton::ClickButton()
 {
-	if(Active==on) return 1;
+	if(Active==true) return 1;
 	return 0;
 }

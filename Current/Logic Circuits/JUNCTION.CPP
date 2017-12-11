@@ -12,7 +12,7 @@ CJunction::CJunction(int X,int Y,int Colour)
 	for(int i=0;i<OutNum;i++)
 		TabNextElem[i]=NULL;
 	Output=error;
-	Movable=yes;
+	Movable=true;
 }
 
 void CJunction::DrawElem(int Colour)
@@ -26,9 +26,9 @@ void CJunction::DrawElem(int Colour)
 			case error:Colour=ErrorColour;break;
 		}
 	}
-	setcolor(Colour);
+	//setcolor(Colour);
 	setfillstyle(1,Colour);
-	pieslice(X1,Y1,0,360,2);
+	pieslice(X1,Y1,0,360,2);	//todo
 }
 
 TOutput CJunction::GetOutput(int AskElemNum,int MaxNum)
@@ -71,10 +71,10 @@ void CJunction::ClickElement()
 
 char CJunction::LinkNextElem(CElement*NextElem,int X,int Y)
 {
+	int i;
 	if(NextElem->ElementType()!=wire) return 0;
 		//w©zeˆ mo¾e by† poˆ¥czony tylko z drutem
 	char OK=0;
-	int i;
 	for(i=0;i<OutNum;i++)
 		if(TabNextElem[i]==NULL)
 		{

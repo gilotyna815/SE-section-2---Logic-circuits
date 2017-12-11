@@ -13,7 +13,7 @@ CConstBus::CConstBus(int X,int Y,int Type)
 	OutNum=-1;//ilo˜† nieograniczona
 	if(Type) Output=high;
 	else Output=low;
-	Movable=yes;
+	Movable=true;
 }
 
 CConstBus::~CConstBus()
@@ -33,9 +33,9 @@ void CConstBus::DrawElem(int Colour)
 			case error:Output=high;Colour=HighColour;break;
 		}
 	}
-	setcolor(Colour);
-	line(X1,Y2-5,X2-10,Y2-5);
-	line(X1,Y2-4,X2-10,Y2-4);
+	//setcolor(Colour);	 //todo
+	drawLine(GetDC(GetActiveWindow()),X1,Y2-5,X2-10,Y2-5);
+	drawLine(GetDC(GetActiveWindow()),X1,Y2-4,X2-10,Y2-4);
 	char Text[2];
 	switch(Output)
 	{
@@ -43,7 +43,7 @@ void CConstBus::DrawElem(int Colour)
 		case high:Text[0]='1';break;
 	}
 	Text[1]='\0';
-	outtextxy(X2-5,Y2-3,Text);
+	TextOut(GetDC(GetActiveWindow()),X2-5,Y2-3,(LPCWSTR)Text,wcslen((LPCWSTR)Text));
 	for(int i=0;i<JunctionNum;i++) TabJunction[i]->DrawElem(Colour);
 }
 

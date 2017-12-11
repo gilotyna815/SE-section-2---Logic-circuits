@@ -20,7 +20,7 @@ CInBus::CInBus(int X,int Y,char Name)
 	OutNum=-1;//ilo˜† nieograniczona
 	Output=high;
 	Visible=true;
-	Movable=no;
+	Movable=false;
 }
 
 CInBus::~CInBus()
@@ -43,8 +43,8 @@ void CInBus::DrawElem(int Colour)
 		}
 	}
 	if(Visible==false) Colour=BackgroundColour;
-	setcolor(Colour);
-	line(X1+5,61,X1+5,Y2-10);//linia gˆ¢wna
+	//setcolor(Colour);	//todo
+	drawLine(GetDC(GetActiveWindow()),X1+5,61,X1+5,Y2-10);//linia gˆ¢wna
 	if(Visible==true)
 	{
 		char Text[2];
@@ -59,8 +59,9 @@ void CInBus::DrawElem(int Colour)
 	}
 	else
 	{
-		setfillstyle(1,FrameColour);
-		bar(X1,Y2-10,X2,Y2);
+		//setfillstyle(1,FrameColour);	todo
+		//bar(X1,Y2-10,X2,Y2);
+		drawLine(GetDC(GetActiveWindow()), X1, Y2 - 10, X2, Y2);
 	}
 	Button[0]->DrawButton();
 	for(int i=0;i<JunctionNum;i++) TabJunction[i]->DrawElem();
@@ -84,17 +85,24 @@ TElementType CInBus::ElementType()
 
 void CInBus::ClickElement()
 {
-	struct REGPACK reg;
-	reg.r_ax=0x3;
-	intr(0x33,&reg);
-	if(Button[0]->IsYourArea(reg.r_cx,reg.r_dx))
+	//struct REGPACK reg;
+	//reg.r_ax=0x3;
+	//intr(0x33,&reg);
+	POINT p;
+	int x, y;
+	if (ScreenToClient(GetActiveWindow(), &p))
+	{
+		x = p.x;
+		y = p.y;
+	}
+	if(Button[0]->IsYourArea(x,y))
 	{
 		Button[0]->ClickButton();
 		if(Visible==true&&JunctionNum==0) Visible=false;
 		else Visible=true;
 		return;
 	}
-	if(Visible==true&&Button[1]->IsYourArea(reg.r_cx,reg.r_dx))
+	if(Visible==true&&Button[1]->IsYourArea(x,y))
 		//aby zmieni† stan szyny, szyna musi by† aktywna(widzialna)
 	{
 		if(Button[1]->ClickButton())

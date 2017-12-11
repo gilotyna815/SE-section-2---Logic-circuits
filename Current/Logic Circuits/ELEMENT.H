@@ -12,10 +12,9 @@ class CElement
 	int Y2;
 	int OutNum;
 	int InNum;
-	enum TOutput{low=0,high=1,error=-1};
-	enum TMovable{yes,no};
+	//enum TMovable{yes,no};
 	TOutput Output;
-	TMovable Movable;
+	bool Movable;
 	CElement*TabNextElem[MaxNextElemNum];
 	CElement*TabPrevElem[MaxPrevElemNum];
 	int IsAreaFree(CElement**TabElem,int NumOfElem);

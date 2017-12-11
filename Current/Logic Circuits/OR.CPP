@@ -14,7 +14,7 @@ COr::COr(int X,int Y,int Colour)
 	for(int i=0;i<OutNum;i++)
 		TabNextElem[i]=NULL;
 	Output=error;
-	Movable=yes;
+	Movable=true;
 }
 
 void COr::DrawElem(int Colour)
@@ -28,7 +28,7 @@ void COr::DrawElem(int Colour)
 			case error:Colour=ErrorColour;break;
 		}
 	}
-	setcolor(Colour);
+	//setcolor(Colour);	//todo
 	arc(X1+3,Y1+14,315,54,9);//ˆuk z lewej
 	line(X1+3,Y1+12,X1+10,Y1+12);//we g.
 	line(X1+3,Y1+17,X1+10,Y1+17);//we d.

@@ -27,10 +27,10 @@ void CButton::ChangeInsertMode(int TurnOff)
 	DrawButton();
 }
 
-void CButton::SetActivity(TActive Active)
+void CButton::SetActivity(bool Active)
 {
 	this->Active=Active;
-	if(Active==on) DrawingColour=16;
+	if(Active==true) DrawingColour=16;
 	else DrawingColour=8;
 	this->DrawButton();
 }

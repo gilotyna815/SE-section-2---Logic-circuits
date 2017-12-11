@@ -14,7 +14,7 @@ CNand::CNand(int X,int Y,int Colour)
 	for(int i=0;i<OutNum;i++)
 		TabNextElem[i]=NULL;
 	Output=error;
-	Movable=yes;
+	Movable=true;
 }
 
 void CNand::DrawElem(int Colour)
@@ -28,13 +28,13 @@ void CNand::DrawElem(int Colour)
 			case error:Colour=ErrorColour;break;
 		}
 	}
-	setcolor(Colour);
-	line(X1+8,Y1+7,X1+8,Y1+22);
-	line(X1+3,Y1+12,X1+8,Y1+12);
-	line(X1+3,Y1+17,X1+8,Y1+17);
-	arc(X1+8,Y1+14,270,90,8);
-	circle(X1+18,Y1+14,2);
-	line(X1+21,Y1+14,X1+24,Y1+14);
+	//setcolor(Colour);	//todo
+	drawLine(GetDC(GetActiveWindow()),X1+8,Y1+7,X1+8,Y1+22);
+	drawLine(GetDC(GetActiveWindow()),X1+3,Y1+12,X1+8,Y1+12);
+	drawLine(GetDC(GetActiveWindow()),X1+3,Y1+17,X1+8,Y1+17);
+	drawPie(GetDC(GetActiveWindow()),X1+8,Y1+14,270,90,8);	//todo
+	drawCircle(GetDC(GetActiveWindow()),X1+18,Y1+14,2);		//todo
+	drawLine(GetDC(GetActiveWindow()),X1+21,Y1+14,X1+24,Y1+14);
 }
 
 TOutput CNand::GetOutput(int AskElemNum,int MaxNum)
@@ -52,7 +52,7 @@ TOutput CNand::GetOutput(int AskElemNum,int MaxNum)
 			TOutput TmpValue=TabPrevElem[i]->GetOutput(AskElemNum+1,MaxNum);
 			if(TmpValue==error)
 				Output=error;
-			else Value*=TmpValue;
+			else Value = (TOutput) (Value *TmpValue);
 		}
 	}
 	if(Value==low) Value=high;

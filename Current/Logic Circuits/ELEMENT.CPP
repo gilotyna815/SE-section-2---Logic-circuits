@@ -100,7 +100,7 @@ int CElement::IsAreaFree(CElement**TabElem,int NumOfElem)
 
 char CElement::Move(int X,int Y,CElement**TabElem,int NumOfElem)
 {
-	if(Movable==no) return 0;
+	if(Movable==false) return 0;
 	int X1Prev=X1;
 	int Y1Prev=Y1;
 	int X2Prev=X2;
@@ -213,10 +213,10 @@ char CElement::LinkPrevElem(CElement*PrevElem,int X,int Y)
 	Y-=Y1;//zmienne X i Y okre˜laj¥ wzgl©dne poˆo¾enie
 	int MinY;
 	int MaxY;
+	int i;
 	char Key=0;
 	int Hight=(Y2-Y1)/InNum;
 	if((Y2-Y1)/InNum) Key=1;//wysoko˜† jest liczb¥ nieparzyst¥
-	int i;
 	for(i=0;i<InNum;i++)
 	{
 		if(Key!=0)
@@ -276,10 +276,10 @@ char CElement::DelPrevElem(CElement*DelElem)
 int CElement::DeleteConnections(CElement**TabElem,int NumOfElem,char Main)
 {
 	int DelElemNum=1;//trzeba wliczy† tak¾e ten element
+	int i;
 	//funkcja wirtualna jest zdefiniowana w tym miejscu dla bramek i wyj˜†,
 	//druty i w©zˆy maj¥ inne ciaˆo funkcji
-	int i;
-	for(i=0;i<NumOfElem;i++)
+	for(int i=0;i<NumOfElem;i++)
 		if(this==TabElem[i]) break;//znalezienie indeksu bie¾¥cego elementu
 	for(int j=i;j<NumOfElem;j++)
 		TabElem[j]=TabElem[j+1];//wyrzucenie elementu z tabeli
@@ -309,6 +309,7 @@ char CElement::Autoformat(CElement**TabElem,int NumOfElem)
 char CElement::SaveElement(CElement**TabElem,int NumOfElem,
 													 FILE*File,char Phase)
 {
+	int i, j;
 	if(Phase==1)//pierwsza faza zachowywania
 	{
 		char Type;
@@ -338,8 +339,7 @@ char CElement::SaveElement(CElement**TabElem,int NumOfElem,
 			int PrevElemPos;
 			if(TabPrevElem[i]!=NULL)
 			{
-				int j;
-				for(j=0;j<NumOfElem;j++)
+				for(int j=0;j<NumOfElem;j++)
 					if(TabElem[j]==TabPrevElem[i]) break;
 						//ustalenie indeksu poprzednich element¢w
 				if(j>=NumOfElem) return 0;//bˆ¥d - element nie zostaˆ znaleziony
@@ -348,13 +348,12 @@ char CElement::SaveElement(CElement**TabElem,int NumOfElem,
 			else PrevElemPos=-1;//nie ma elementu poprzedniego na i-tej pozycji
 			fwrite(&PrevElemPos,sizeof(int),1,File);
 		}
-		for(int i=0;i<OutNum;i++)
+		for(i=0;i<OutNum;i++)
 		{
 			int NextElemPos;
 			if(TabNextElem[i]!=NULL)
 			{
-				int j;
-				for(j=0;j<NumOfElem;j++)
+				for(int j=0;j<NumOfElem;j++)
 					if(TabElem[j]==TabNextElem[i]) break;
 						//ustalenie indeksu poprzednich element¢w
 				if(j>=NumOfElem) return 0;//bˆ¥d - element nie zostaˆ znaleziony

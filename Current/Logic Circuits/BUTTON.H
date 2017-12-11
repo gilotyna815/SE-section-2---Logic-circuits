@@ -10,17 +10,20 @@ class CButton
 	int Y2;
 	int ButtonColour;
 	int DrawingColour;
-	enum TActive{off,on};
+	//enum TInsert{true,false};
+	//enum TActive{off,on};
+	bool Active;
 	bool Insert;
-	TActive Active;
+	//TInsert Insert;
+	//TActive Active;
  public:
 	virtual void DrawButton()=0;
 	void ChangeInsertMode(int TurnOff=0);
-	void ActiveMode(TActive Active);
+	//void ActiveMode(bool Active);
 	virtual void ChangeText(char*)=0;
 	int IsYourArea(int X,int Y);
 	virtual int ClickButton()=0;
-	void SetActivity(TActive Active);
+	void SetActivity(bool Active);
 	virtual ~CButton();
 };
 

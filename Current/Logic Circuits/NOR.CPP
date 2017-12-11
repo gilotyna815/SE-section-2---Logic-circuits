@@ -14,7 +14,7 @@ CNor::CNor(int X,int Y,int Colour)
 	for(int i=0;i<OutNum;i++)
 		TabNextElem[i]=NULL;
 	Output=error;
-	Movable=yes;
+	Movable=true;
 }
 
 void CNor::DrawElem(int Colour)
@@ -28,13 +28,13 @@ void CNor::DrawElem(int Colour)
 			case error:Colour=ErrorColour;break;
 		}
 	}
-	setcolor(Colour);
-	arc(X1+3,Y1+14,315,54,9);//ˆuk z lewej
-	line(X1+3,Y1+12,X1+10,Y1+12);//we g.
-	line(X1+3,Y1+17,X1+10,Y1+17);//we d.
-	arc(X1+8,Y1+14,270,90,8);//ˆuk z prawej
-	circle(X1+18,Y1+14,2);//negacja
-	line(X1+21,Y1+14,X1+24,Y1+14);//wyj˜cie
+	//setcolor(Colour); to do
+	drawPie(GetDC(GetActiveWindow()),X1+3,Y1+14,315,54,9);//ˆuk z lewej
+	drawLine(GetDC(GetActiveWindow()), X1+3,Y1+12,X1+10,Y1+12);//we g.
+	drawLine(GetDC(GetActiveWindow()), X1+3,Y1+17,X1+10,Y1+17);//we d.
+	drawPie(GetDC(GetActiveWindow()), X1+8,Y1+14,270,90,8);//ˆuk z prawej
+	drawCircle(GetDC(GetActiveWindow()), X1+18,Y1+14,2);//negacja
+	drawLine(GetDC(GetActiveWindow()), X1+21,Y1+14,X1+24,Y1+14);//wyj˜cie
 }
 
 TOutput CNor::GetOutput(int AskElemNum,int MaxNum)
@@ -52,8 +52,8 @@ TOutput CNor::GetOutput(int AskElemNum,int MaxNum)
 			TOutput TmpValue=TabPrevElem[i]->GetOutput(AskElemNum+1,MaxNum);
 			if(TmpValue==error)
 				Output=error;
-			else Value+=TmpValue;
-			if(Value>1) Value=1;
+			else Value = (TOutput) (Value *TmpValue);
+			if(Value>1) Value=high;
 		}
 	}
 	if(Value==low) Value=high;

@@ -14,7 +14,7 @@ CNot::CNot(int X,int Y,int Colour)
 	for(int i=0;i<OutNum;i++)
 		TabNextElem[i]=NULL;
 	Output=error;
-	Movable=yes;
+	Movable=true;
 }
 
 void CNot::DrawElem(int Colour)
@@ -28,13 +28,13 @@ void CNot::DrawElem(int Colour)
 			case error:Colour=ErrorColour;break;
 		}
 	}
-	setcolor(Colour);
-	line(X1+8,Y1+7,X1+8,Y1+22);//linia z lewej
-	line(X1+3,Y1+14,X1+8,Y1+14);//wej˜cie
-	line(X1+8,Y1+7,X1+17,Y1+14);//linia z g¢ry
-	line(X1+8,Y1+22,X1+17,Y1+14);//linia z doˆu
-	circle(X1+19,Y1+14,2);//negacja
-	line(X1+21,Y1+14,X1+24,Y1+14);//wyj˜cie
+	//setcolor(Colour);	//todo
+	drawLine(GetDC(GetActiveWindow()), X1 + 8, Y1 + 7, X1 + 8, Y1 + 22);//linia z lewej
+	drawLine(GetDC(GetActiveWindow()), X1 + 3, Y1 + 14, X1 + 8, Y1 + 14);//wej˜cie
+	drawLine(GetDC(GetActiveWindow()), X1 + 8, Y1 + 7, X1 + 17, Y1 + 14);//linia z g¢ry
+	drawLine(GetDC(GetActiveWindow()), X1 + 8, Y1 + 22, X1 + 17, Y1 + 14);//linia z doˆu
+	drawCircle(GetDC(GetActiveWindow()), X1 + 19, Y1 + 14, 2);//negacja
+	drawLine(GetDC(GetActiveWindow()), X1 + 21, Y1 + 14, X1 + 24, Y1 + 14);//wyj˜cie
 }
 
 TOutput CNot::GetOutput(int AskElemNum,int MaxNum)

@@ -1,5 +1,7 @@
-#ifndef DefGate
-#define DefGate
+#pragma once
+
+#include "resource.h"
+#include "stdafx.h"
 
 #include <dos.h>
 #include <string.h>
@@ -7,8 +9,6 @@
 #include <stdio.h>
 #include <io.h>
 #include <SYS\STAT.H>
-#include <graphics.h>
-#include <alloc.h>
 #include <malloc.h>
 #include <process.h>
 
@@ -39,15 +39,18 @@
 #define MaxPrevElemNum 2
 #define MaxSmallWinLinesNum 4
 
-enum TElementType{and,or,not,nor,nand,xor,output,wire,junction,inbus,cbus};
+enum TElementType { and, or , not, nor, nand, xor, output, wire, junction, inbus, cbus };
+enum TOutput { low = 0, high = 1, error = -1 };
 
-void InitGraph(char *path="f:/borlandc/bgi");
+//void InitGraph(char *path = "f:/borlandc/bgi");
 
-int CheckMouse();
+//int CheckMouse();
+
+void Control();
 
 void FirstInfo();
 
 char ConfirmQuit();
+void drawLine(HDC hdc, int x1, int y1, int x2, int y2);
 
-main();
-#endif
+//main();
