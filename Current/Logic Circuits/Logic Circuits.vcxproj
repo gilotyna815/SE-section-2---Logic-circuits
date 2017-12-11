@@ -138,63 +138,55 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\Downloads\SE-section-2---Logic-circuits-master\Current\AND.H" />
-    <ClInclude Include="..\..\..\Downloads\SE-section-2---Logic-circuits-master\Current\BUTTON.H" />
-    <ClInclude Include="..\..\..\Downloads\SE-section-2---Logic-circuits-master\Current\CONSTBUS.H" />
-    <ClInclude Include="..\..\..\Downloads\SE-section-2---Logic-circuits-master\Current\ELEMENT.H" />
-    <ClInclude Include="..\..\..\Downloads\SE-section-2---Logic-circuits-master\Current\GATE.H" />
-    <ClInclude Include="..\..\..\Downloads\SE-section-2---Logic-circuits-master\Current\INBUS.H" />
-    <ClInclude Include="..\..\..\Downloads\SE-section-2---Logic-circuits-master\Current\JUNCTION.H" />
-    <ClInclude Include="..\..\..\Downloads\SE-section-2---Logic-circuits-master\Current\LOGIC.H" />
-    <ClInclude Include="..\..\..\Downloads\SE-section-2---Logic-circuits-master\Current\MENUBUT.H" />
-    <ClInclude Include="..\..\..\Downloads\SE-section-2---Logic-circuits-master\Current\MODEBUT.H" />
-    <ClInclude Include="..\..\..\Downloads\SE-section-2---Logic-circuits-master\Current\NAND.H" />
-    <ClInclude Include="..\..\..\Downloads\SE-section-2---Logic-circuits-master\Current\NOR.H" />
-    <ClInclude Include="..\..\..\Downloads\SE-section-2---Logic-circuits-master\Current\NOT.H" />
-    <ClInclude Include="..\..\..\Downloads\SE-section-2---Logic-circuits-master\Current\OR.H" />
-    <ClInclude Include="..\..\..\Downloads\SE-section-2---Logic-circuits-master\Current\OUTPUT.H" />
-    <ClInclude Include="..\..\..\Downloads\SE-section-2---Logic-circuits-master\Current\SMALLWIN.H" />
-    <ClInclude Include="..\..\..\Downloads\SE-section-2---Logic-circuits-master\Current\WIRE.H" />
-    <ClInclude Include="..\..\..\Downloads\SE-section-2---Logic-circuits-master\Current\XOR.H" />
-    <ClInclude Include="WINDOW.h" />
-    <ClInclude Include="Resource.h" />
-    <ClInclude Include="stdafx.h" />
-    <ClInclude Include="targetver.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\..\Downloads\SE-section-2---Logic-circuits-master\Current\AND.CPP" />
-    <ClCompile Include="..\..\..\Downloads\SE-section-2---Logic-circuits-master\Current\BUTTON.CPP" />
-    <ClCompile Include="..\..\..\Downloads\SE-section-2---Logic-circuits-master\Current\CONSTBUS.CPP" />
-    <ClCompile Include="..\..\..\Downloads\SE-section-2---Logic-circuits-master\Current\ELEMENT.CPP" />
-    <ClCompile Include="..\..\..\Downloads\SE-section-2---Logic-circuits-master\Current\GATE.CPP" />
-    <ClCompile Include="..\..\..\Downloads\SE-section-2---Logic-circuits-master\Current\INBUS.CPP" />
-    <ClCompile Include="..\..\..\Downloads\SE-section-2---Logic-circuits-master\Current\JUNCTION.CPP" />
-    <ClCompile Include="..\..\..\Downloads\SE-section-2---Logic-circuits-master\Current\LOGIC.CPP" />
-    <ClCompile Include="..\..\..\Downloads\SE-section-2---Logic-circuits-master\Current\MENUBUT.CPP" />
-    <ClCompile Include="..\..\..\Downloads\SE-section-2---Logic-circuits-master\Current\MODEBUT.CPP" />
-    <ClCompile Include="..\..\..\Downloads\SE-section-2---Logic-circuits-master\Current\NAND.CPP" />
-    <ClCompile Include="..\..\..\Downloads\SE-section-2---Logic-circuits-master\Current\NOR.CPP" />
-    <ClCompile Include="..\..\..\Downloads\SE-section-2---Logic-circuits-master\Current\NOT.CPP" />
-    <ClCompile Include="..\..\..\Downloads\SE-section-2---Logic-circuits-master\Current\OR.CPP" />
-    <ClCompile Include="..\..\..\Downloads\SE-section-2---Logic-circuits-master\Current\OUTPUT.CPP" />
-    <ClCompile Include="..\..\..\Downloads\SE-section-2---Logic-circuits-master\Current\SMALLWIN.CPP" />
-    <ClCompile Include="..\..\..\Downloads\SE-section-2---Logic-circuits-master\Current\TMP.CPP" />
-    <ClCompile Include="..\..\..\Downloads\SE-section-2---Logic-circuits-master\Current\WIRE.CPP" />
-    <ClCompile Include="..\..\..\Downloads\SE-section-2---Logic-circuits-master\Current\XOR.CPP" />
-    <ClCompile Include="WINDOW.cpp" />
-    <ClCompile Include="stdafx.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
     <ResourceCompile Include="Logic Circuits.rc" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Logic Circuits.ico" />
     <Image Include="small.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AND.H" />
+    <ClInclude Include="BUTTON.H" />
+    <ClInclude Include="CONSTBUS.H" />
+    <ClInclude Include="ELEMENT.H" />
+    <ClInclude Include="GATE.H" />
+    <ClInclude Include="INBUS.H" />
+    <ClInclude Include="JUNCTION.H" />
+    <ClInclude Include="MENUBUT.H" />
+    <ClInclude Include="MODEBUT.H" />
+    <ClInclude Include="NAND.H" />
+    <ClInclude Include="NOR.H" />
+    <ClInclude Include="NOT.H" />
+    <ClInclude Include="OR.H" />
+    <ClInclude Include="OUTPUT.H" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="SMALLWIN.H" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="WINDOW.H" />
+    <ClInclude Include="WIRE.H" />
+    <ClInclude Include="XOR.H" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AND.CPP" />
+    <ClCompile Include="BUTTON.CPP" />
+    <ClCompile Include="CONSTBUS.CPP" />
+    <ClCompile Include="ELEMENT.CPP" />
+    <ClCompile Include="GATE.CPP" />
+    <ClCompile Include="INBUS.CPP" />
+    <ClCompile Include="JUNCTION.CPP" />
+    <ClCompile Include="MENUBUT.CPP" />
+    <ClCompile Include="MODEBUT.CPP" />
+    <ClCompile Include="NAND.CPP" />
+    <ClCompile Include="NOR.CPP" />
+    <ClCompile Include="NOT.CPP" />
+    <ClCompile Include="OR.CPP" />
+    <ClCompile Include="OUTPUT.CPP" />
+    <ClCompile Include="SMALLWIN.CPP" />
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="WINDOW.cpp" />
+    <ClCompile Include="WIRE.CPP" />
+    <ClCompile Include="XOR.CPP" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

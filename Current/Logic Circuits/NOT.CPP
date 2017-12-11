@@ -1,31 +1,31 @@
 #include "not.h"
 #include "gate.h"
 
-CNot::CNot(int X,int Y,int Colour)
+CNot::CNot(int X, int Y, int Colour)
 {
-	X1=X;
-	Y1=Y;
-	X2=X+25;
-	Y2=Y+25;
-	InNum=1;
-	OutNum=1;
-	for(int i=0;i<InNum;i++)
-		TabPrevElem[i]=NULL;
-	for(int i=0;i<OutNum;i++)
-		TabNextElem[i]=NULL;
-	Output=error;
-	Movable=true;
+	X1 = X;
+	Y1 = Y;
+	X2 = X + 25;
+	Y2 = Y + 25;
+	InNum = 1;
+	OutNum = 1;
+	for (int i = 0; i < InNum; i++)
+		TabPrevElem[i] = NULL;
+	for (int i = 0; i < OutNum; i++)
+		TabNextElem[i] = NULL;
+	Output = error;
+	Movable = true;
 }
 
 void CNot::DrawElem(int Colour)
 {
-	if(Colour==0)
+	if (Colour == 0)
 	{
-		switch(Output)
+		switch (Output)
 		{
-			case low:Colour=LowColour;break;
-			case high:Colour=HighColour;break;
-			case error:Colour=ErrorColour;break;
+		case low:Colour = LowColour; break;
+		case high:Colour = HighColour; break;
+		case error:Colour = ErrorColour; break;
 		}
 	}
 	//setcolor(Colour);	//todo
@@ -37,19 +37,19 @@ void CNot::DrawElem(int Colour)
 	drawLine(GetDC(GetActiveWindow()), X1 + 21, Y1 + 14, X1 + 24, Y1 + 14);//wyj˜cie
 }
 
-TOutput CNot::GetOutput(int AskElemNum,int MaxNum)
+TOutput CNot::GetOutput(int AskElemNum, int MaxNum)
 {
-	if(AskElemNum==MaxNum) return Output;
-		//rekurencja wpadˆa w p©tl© sprz©¾enia zwrotnego
-	if(TabPrevElem[0]==NULL)//bramka jednowej˜ciowa
+	if (AskElemNum == MaxNum) return Output;
+	//rekurencja wpadˆa w p©tl© sprz©¾enia zwrotnego
+	if (TabPrevElem[0] == NULL)//bramka jednowej˜ciowa
 	{
-		Output=error;
+		Output = error;
 		return Output;
 	}
-	TOutput TmpValue=TabPrevElem[0]->GetOutput(AskElemNum+1,MaxNum);
-	if(TmpValue==high) Output=low;
-	else if(TmpValue==low) Output=high;
-	else Output=error;
+	TOutput TmpValue = TabPrevElem[0]->GetOutput(AskElemNum + 1, MaxNum);
+	if (TmpValue == high) Output = low;
+	else if (TmpValue == low) Output = high;
+	else Output = error;
 	return Output;
 }
 
@@ -61,14 +61,14 @@ TElementType CNot::ElementType()
 void CNot::ClickElement()
 {}
 
-char CNot::LinkPrevElem(CElement*PrevElem,int X,int Y)
+char CNot::LinkPrevElem(CElement*PrevElem, int X, int Y)
 {
-	if(PrevElem->ElementType()!=wire) return 0;
-		//bramka mo¾e by† poˆ¥czona tylko z drutem
-	X-=X1;
-	Y-=Y1;//zmienne X i Y okre˜laj¥ wzgl©dne poˆo¾enie
-	if(TabPrevElem[0]!=NULL) return 0;
-	TabPrevElem[0]=PrevElem;
-	PrevElem->MoveEnd(X1+3,Y1+14);
+	if (PrevElem->ElementType() != wire) return 0;
+	//bramka mo¾e by† poˆ¥czona tylko z drutem
+	X -= X1;
+	Y -= Y1;//zmienne X i Y okre˜laj¥ wzgl©dne poˆo¾enie
+	if (TabPrevElem[0] != NULL) return 0;
+	TabPrevElem[0] = PrevElem;
+	PrevElem->MoveEnd(X1 + 3, Y1 + 14);
 	return 1;
 }

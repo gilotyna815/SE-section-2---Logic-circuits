@@ -20,32 +20,32 @@ LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
-                     _In_opt_ HINSTANCE hPrevInstance,
-                     _In_ LPWSTR    lpCmdLine,
-                     _In_ int       nCmdShow)
+	_In_opt_ HINSTANCE hPrevInstance,
+	_In_ LPWSTR    lpCmdLine,
+	_In_ int       nCmdShow)
 {
-    UNREFERENCED_PARAMETER(hPrevInstance);
-    UNREFERENCED_PARAMETER(lpCmdLine);
+	UNREFERENCED_PARAMETER(hPrevInstance);
+	UNREFERENCED_PARAMETER(lpCmdLine);
 
-    // TODO: W tym miejscu umieœæ kod.
+	// TODO: W tym miejscu umieœæ kod.
 
-    // Zainicjuj ci¹gi globalne
-    LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
-    LoadStringW(hInstance, IDC_SE_CURRENT, szWindowClass, MAX_LOADSTRING);
-    MyRegisterClass(hInstance);
+	// Zainicjuj ci¹gi globalne
+	LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
+	LoadStringW(hInstance, IDC_SE_CURRENT, szWindowClass, MAX_LOADSTRING);
+	MyRegisterClass(hInstance);
 
-    // Wykonaj inicjacje aplikacji:
-    if (!InitInstance (hInstance, nCmdShow))
-    {
-        return FALSE;
-    }
+	// Wykonaj inicjacje aplikacji:
+	if (!InitInstance(hInstance, nCmdShow))
+	{
+		return FALSE;
+	}
 
-    HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_SE_CURRENT));
+	HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_SE_CURRENT));
 
-    MSG msg;
+	MSG msg;
 
 	FirstInfo();
-	
+
 	// idk where to put this part ------------------------------------------------------------------------------
 	do
 	{
@@ -54,19 +54,19 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	// ---------------------------------------------------------------------------------------------------------
 
 
-    // G³ówna pêtla wiadomoœci:
-    while (GetMessage(&msg, nullptr, 0, 0))
-    {
-        if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
-        {
-            TranslateMessage(&msg);
-            DispatchMessage(&msg);
-        }
-    }
+	// G³ówna pêtla wiadomoœci:
+	while (GetMessage(&msg, nullptr, 0, 0))
+	{
+		if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
+		{
+			TranslateMessage(&msg);
+			DispatchMessage(&msg);
+		}
+	}
 
-	
 
-    return (int) msg.wParam;
+
+	return (int)msg.wParam;
 }
 
 
@@ -78,23 +78,23 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 //
 ATOM MyRegisterClass(HINSTANCE hInstance)
 {
-    WNDCLASSEXW wcex;
+	WNDCLASSEXW wcex;
 
-    wcex.cbSize = sizeof(WNDCLASSEX);
+	wcex.cbSize = sizeof(WNDCLASSEX);
 
-    wcex.style          = CS_HREDRAW | CS_VREDRAW;
-    wcex.lpfnWndProc    = WndProc;
-    wcex.cbClsExtra     = 0;
-    wcex.cbWndExtra     = 0;
-    wcex.hInstance      = hInstance;
-    wcex.hIcon          = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_SE_CURRENT));
-    wcex.hCursor        = LoadCursor(nullptr, IDC_ARROW);
-    wcex.hbrBackground  = (HBRUSH)(COLOR_WINDOW+1);
-    wcex.lpszMenuName   = MAKEINTRESOURCEW(IDC_SE_CURRENT);
-    wcex.lpszClassName  = szWindowClass;
-    wcex.hIconSm        = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
+	wcex.style = CS_HREDRAW | CS_VREDRAW;
+	wcex.lpfnWndProc = WndProc;
+	wcex.cbClsExtra = 0;
+	wcex.cbWndExtra = 0;
+	wcex.hInstance = hInstance;
+	wcex.hIcon = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_SE_CURRENT));
+	wcex.hCursor = LoadCursor(nullptr, IDC_ARROW);
+	wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
+	wcex.lpszMenuName = MAKEINTRESOURCEW(IDC_SE_CURRENT);
+	wcex.lpszClassName = szWindowClass;
+	wcex.hIconSm = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
 
-    return RegisterClassExW(&wcex);
+	return RegisterClassExW(&wcex);
 }
 
 //
@@ -109,21 +109,21 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 //
 BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
-   hInst = hInstance; // Przechowuj dojœcie wyst¹pienia w zmiennej globalnej
+	hInst = hInstance; // Przechowuj dojœcie wyst¹pienia w zmiennej globalnej
 
-   HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
-      CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
+	HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
+		CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
 
-   if (!hWnd)
-   {
-      return FALSE;
-   }
+	if (!hWnd)
+	{
+		return FALSE;
+	}
 
-  // currentWin = GetDC(hWnd);
-   ShowWindow(hWnd, nCmdShow);
-   UpdateWindow(hWnd);
+	// currentWin = GetDC(hWnd);
+	ShowWindow(hWnd, nCmdShow);
+	UpdateWindow(hWnd);
 
-   return TRUE;
+	return TRUE;
 }
 
 //
@@ -138,60 +138,60 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 //
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
-    switch (message)
-    {
-    case WM_COMMAND:
-        {
-            int wmId = LOWORD(wParam);
-            // Analizuj zaznaczenia menu:
-            switch (wmId)
-            {
-            case IDM_ABOUT:
-                DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
-                break;
-            case IDM_EXIT:
-                DestroyWindow(hWnd);
-                break;
-            default:
-                return DefWindowProc(hWnd, message, wParam, lParam);
-            }
-        }
-        break;
-    case WM_PAINT:
-        {
-            PAINTSTRUCT ps;
-            HDC hdc = BeginPaint(hWnd, &ps);
-            // TODO: tutaj dodaj kod rysowania u¿ywaj¹cy elementu hdc...
-            EndPaint(hWnd, &ps);
-        }
-        break;
-    case WM_DESTROY:
-        PostQuitMessage(0);
-        break;
-    default:
-        return DefWindowProc(hWnd, message, wParam, lParam);
-    }
-    return 0;
+	switch (message)
+	{
+	case WM_COMMAND:
+	{
+		int wmId = LOWORD(wParam);
+		// Analizuj zaznaczenia menu:
+		switch (wmId)
+		{
+		case IDM_ABOUT:
+			DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
+			break;
+		case IDM_EXIT:
+			DestroyWindow(hWnd);
+			break;
+		default:
+			return DefWindowProc(hWnd, message, wParam, lParam);
+		}
+	}
+	break;
+	case WM_PAINT:
+	{
+		PAINTSTRUCT ps;
+		HDC hdc = BeginPaint(hWnd, &ps);
+		// TODO: tutaj dodaj kod rysowania u¿ywaj¹cy elementu hdc...
+		EndPaint(hWnd, &ps);
+	}
+	break;
+	case WM_DESTROY:
+		PostQuitMessage(0);
+		break;
+	default:
+		return DefWindowProc(hWnd, message, wParam, lParam);
+	}
+	return 0;
 }
 
 //Procedura obs³ugi wiadomoœci dla okna informacji o programie.
 INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 {
-    UNREFERENCED_PARAMETER(lParam);
-    switch (message)
-    {
-    case WM_INITDIALOG:
-        return (INT_PTR)TRUE;
+	UNREFERENCED_PARAMETER(lParam);
+	switch (message)
+	{
+	case WM_INITDIALOG:
+		return (INT_PTR)TRUE;
 
-    case WM_COMMAND:
-        if (LOWORD(wParam) == IDOK || LOWORD(wParam) == IDCANCEL)
-        {
-            EndDialog(hDlg, LOWORD(wParam));
-            return (INT_PTR)TRUE;
-        }
-        break;
-    }
-    return (INT_PTR)FALSE;
+	case WM_COMMAND:
+		if (LOWORD(wParam) == IDOK || LOWORD(wParam) == IDCANCEL)
+		{
+			EndDialog(hDlg, LOWORD(wParam));
+			return (INT_PTR)TRUE;
+		}
+		break;
+	}
+	return (INT_PTR)FALSE;
 }
 
 //Funkcje dodatkowe
@@ -244,19 +244,19 @@ void Control()
 	char IsPrev;//flaga m¢wi¥ca, czy istnieje okno wcze˜niejsze
 	char IsNext;//flaga m¢wi¥ca, czy istnieje okno nast©pne
 	int TabWin[MaxWinNum];//tablica flag m¢wi¥cych, czy okno istnieje
-	for (int i = 0; i<MaxWinNum; i++) TabWin[i] = 0;
+	for (int i = 0; i < MaxWinNum; i++) TabWin[i] = 0;
 	TabWin[0] = 1;
 	do
 	{
 		IsPrev = 0;
 		IsNext = 0;
-		for (int i = 0; i<CurrentWinNum; i++)
+		for (int i = 0; i < CurrentWinNum; i++)
 			if (TabWin[i] == 1)
 			{
 				IsPrev = 1;
 				break;
 			}
-		for (int i = CurrentWinNum + 1; i<MaxWinNum; i++)
+		for (int i = CurrentWinNum + 1; i < MaxWinNum; i++)
 			if (TabWin[i] == 1)
 			{
 				IsNext = 1;
@@ -272,7 +272,7 @@ void Control()
 			if (NewPossib == 0) NewPossib = 1;
 			//skasowane zostaˆo jakie˜ okno, wi©c mo¾na utworzy† nowe okno
 			int i;
-			for (i = CurrentWinNum + 1; i<MaxWinNum; i++)
+			for (i = CurrentWinNum + 1; i < MaxWinNum; i++)
 				if (TabWin[i] == 1)
 				{
 					CurrentWinNum = i;
@@ -285,7 +285,7 @@ void Control()
 						CurrentWinNum = i;
 						break;
 					}
-			if (i<0) TotalWinNum = 0;//okno zamkni©te byˆo ostatnie
+			if (i < 0) TotalWinNum = 0;//okno zamkni©te byˆo ostatnie
 		}
 		else
 			if (WinResult == -1)//wy˜wietlone ma by† okno poprzednie
@@ -294,13 +294,13 @@ void Control()
 				for (i = CurrentWinNum - 1; i >= 0; i--)
 					if (TabWin[i] == 1) break;
 				CurrentWinNum = i;
-				if (i<0) TotalWinNum = 0;//wyst¥piˆ bˆ¥d
+				if (i < 0) TotalWinNum = 0;//wyst¥piˆ bˆ¥d
 			}
 			else
 				if (WinResult == 1)//wy˜wietlone ma by† okno nast©pne
 				{
 					int i;
-					for (i = CurrentWinNum + 1; i<MaxWinNum; i++)
+					for (i = CurrentWinNum + 1; i < MaxWinNum; i++)
 						if (TabWin[i] == 1) break;
 					CurrentWinNum = i;
 					if (i >= MaxWinNum) TotalWinNum = 0;//wyst¥piˆ bˆ¥d
@@ -309,7 +309,7 @@ void Control()
 					if (WinResult == 2)//ma powsta† nowe okno
 					{
 						int i;
-						for (i = 0; i<MaxWinNum; i++)
+						for (i = 0; i < MaxWinNum; i++)
 							if (TabWin[i] == 0) break;
 						CurrentWinNum = i;
 						TabWin[CurrentWinNum] = 1;
@@ -319,7 +319,7 @@ void Control()
 						IsNew = 1;//kolejne okno b©dzie nowym oknem
 					}
 		delete Window;
-	} while (TotalWinNum>0);
+	} while (TotalWinNum > 0);
 }
 
 char ConfirmQuit()
@@ -329,7 +329,7 @@ char ConfirmQuit()
 	TabText[0] = new char[40];
 	TabText[1] = new char[40];
 	strcpy(TabText[0], "You have closed the last window...");
-	for (i = 0; i<5; i++) TabText[1][i] = ' ';
+	for (i = 0; i < 5; i++) TabText[1][i] = ' ';
 	TabText[1][i] = '\x0';
 	strcat(TabText[1], "Do you really want to quit?");
 	TabText[2] = NULL;
@@ -363,7 +363,7 @@ void FirstInfo()
 	drawLine(GetDC(GetActiveWindow()), 1, 1, 639, 479);	//maybe we should use rectangle?
 	char*TabText[2];
 	TabText[0] = new char[40];
-	for (int i = 0; i<4; i++) TabText[0][i] = ' ';
+	for (int i = 0; i < 4; i++) TabText[0][i] = ' ';
 	TabText[0][i] = '\x0';
 	strcat(TabText[0], "LOGIC CIRCUITS 1.0");
 	TabText[1] = NULL;

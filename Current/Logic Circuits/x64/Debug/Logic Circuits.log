@@ -1,0 +1,39 @@
+﻿  XOR.CPP
+c:\users\quasko\downloads\se-section-2---logic-circuits-master\current\logic circuits\xor.cpp(70): fatal error C1010: Nieoczekiwany koniec pliku podczas wyszukiwania prekompilowanego nagłówka. Czy zapomniano dodać "#include "stdafx.h"" do twojego źródła?
+  WIRE.CPP
+c:\users\quasko\downloads\se-section-2---logic-circuits-master\current\logic circuits\wire.cpp(954): fatal error C1010: Nieoczekiwany koniec pliku podczas wyszukiwania prekompilowanego nagłówka. Czy zapomniano dodać "#include "stdafx.h"" do twojego źródła?
+  WINDOW.cpp
+c:\users\quasko\downloads\se-section-2---logic-circuits-master\current\logic circuits\window.cpp(815): fatal error C1010: Nieoczekiwany koniec pliku podczas wyszukiwania prekompilowanego nagłówka. Czy zapomniano dodać "#include "stdafx.h"" do twojego źródła?
+  stdafx.cpp
+c:\users\quasko\downloads\se-section-2---logic-circuits-master\current\logic circuits\stdafx.cpp(5): fatal error C1083: Nie można otworzyć pliku prekompilowany nagłówek: 'x64\Debug\Logic Circuits.pch': No such file or directory
+  SMALLWIN.CPP
+c:\users\quasko\downloads\se-section-2---logic-circuits-master\current\logic circuits\smallwin.cpp(238): fatal error C1010: Nieoczekiwany koniec pliku podczas wyszukiwania prekompilowanego nagłówka. Czy zapomniano dodać "#include "stdafx.h"" do twojego źródła?
+  OUTPUT.CPP
+c:\users\quasko\downloads\se-section-2---logic-circuits-master\current\logic circuits\output.cpp(75): fatal error C1010: Nieoczekiwany koniec pliku podczas wyszukiwania prekompilowanego nagłówka. Czy zapomniano dodać "#include "stdafx.h"" do twojego źródła?
+  OR.CPP
+c:\users\quasko\downloads\se-section-2---logic-circuits-master\current\logic circuits\or.cpp(69): fatal error C1010: Nieoczekiwany koniec pliku podczas wyszukiwania prekompilowanego nagłówka. Czy zapomniano dodać "#include "stdafx.h"" do twojego źródła?
+  NOT.CPP
+c:\users\quasko\downloads\se-section-2---logic-circuits-master\current\logic circuits\not.cpp(75): fatal error C1010: Nieoczekiwany koniec pliku podczas wyszukiwania prekompilowanego nagłówka. Czy zapomniano dodać "#include "stdafx.h"" do twojego źródła?
+  NOR.CPP
+c:\users\quasko\downloads\se-section-2---logic-circuits-master\current\logic circuits\nor.cpp(72): fatal error C1010: Nieoczekiwany koniec pliku podczas wyszukiwania prekompilowanego nagłówka. Czy zapomniano dodać "#include "stdafx.h"" do twojego źródła?
+  NAND.CPP
+c:\users\quasko\downloads\se-section-2---logic-circuits-master\current\logic circuits\nand.cpp(71): fatal error C1010: Nieoczekiwany koniec pliku podczas wyszukiwania prekompilowanego nagłówka. Czy zapomniano dodać "#include "stdafx.h"" do twojego źródła?
+  MODEBUT.CPP
+c:\users\quasko\downloads\se-section-2---logic-circuits-master\current\logic circuits\modebut.cpp(62): fatal error C1010: Nieoczekiwany koniec pliku podczas wyszukiwania prekompilowanego nagłówka. Czy zapomniano dodać "#include "stdafx.h"" do twojego źródła?
+  MENUBUT.CPP
+c:\users\quasko\downloads\se-section-2---logic-circuits-master\current\logic circuits\menubut.cpp(114): fatal error C1010: Nieoczekiwany koniec pliku podczas wyszukiwania prekompilowanego nagłówka. Czy zapomniano dodać "#include "stdafx.h"" do twojego źródła?
+  JUNCTION.CPP
+c:\users\quasko\downloads\se-section-2---logic-circuits-master\current\logic circuits\junction.cpp(124): fatal error C1010: Nieoczekiwany koniec pliku podczas wyszukiwania prekompilowanego nagłówka. Czy zapomniano dodać "#include "stdafx.h"" do twojego źródła?
+  INBUS.CPP
+c:\users\quasko\downloads\se-section-2---logic-circuits-master\current\logic circuits\inbus.cpp(243): fatal error C1010: Nieoczekiwany koniec pliku podczas wyszukiwania prekompilowanego nagłówka. Czy zapomniano dodać "#include "stdafx.h"" do twojego źródła?
+  GATE.CPP
+c:\users\quasko\downloads\se-section-2---logic-circuits-master\current\logic circuits\gate.cpp(4): fatal error C1083: Nie można otworzyć pliku prekompilowany nagłówek: 'x64\Debug\Logic Circuits.pch': No such file or directory
+  ELEMENT.CPP
+c:\users\quasko\downloads\se-section-2---logic-circuits-master\current\logic circuits\element.cpp(418): fatal error C1010: Nieoczekiwany koniec pliku podczas wyszukiwania prekompilowanego nagłówka. Czy zapomniano dodać "#include "stdafx.h"" do twojego źródła?
+  CONSTBUS.CPP
+c:\users\quasko\downloads\se-section-2---logic-circuits-master\current\logic circuits\constbus.cpp(178): fatal error C1010: Nieoczekiwany koniec pliku podczas wyszukiwania prekompilowanego nagłówka. Czy zapomniano dodać "#include "stdafx.h"" do twojego źródła?
+  BUTTON.CPP
+c:\users\quasko\downloads\se-section-2---logic-circuits-master\current\logic circuits\button.cpp(37): fatal error C1010: Nieoczekiwany koniec pliku podczas wyszukiwania prekompilowanego nagłówka. Czy zapomniano dodać "#include "stdafx.h"" do twojego źródła?
+  AND.CPP
+c:\users\quasko\downloads\se-section-2---logic-circuits-master\current\logic circuits\and.cpp(67): fatal error C1010: Nieoczekiwany koniec pliku podczas wyszukiwania prekompilowanego nagłówka. Czy zapomniano dodać "#include "stdafx.h"" do twojego źródła?
+  Generowanie kodu...

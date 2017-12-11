@@ -3,7 +3,7 @@
 
 class CButton
 {
- protected:
+protected:
 	int X1;
 	int Y1;
 	int X2;
@@ -16,13 +16,13 @@ class CButton
 	bool Insert;
 	//TInsert Insert;
 	//TActive Active;
- public:
-	virtual void DrawButton()=0;
-	void ChangeInsertMode(int TurnOff=0);
+public:
+	virtual void DrawButton() = 0;
+	void ChangeInsertMode(int TurnOff = 0);
 	//void ActiveMode(bool Active);
-	virtual void ChangeText(char*)=0;
-	int IsYourArea(int X,int Y);
-	virtual int ClickButton()=0;
+	virtual void ChangeText(char*) = 0;
+	int IsYourArea(int X, int Y);
+	virtual int ClickButton() = 0;
 	void SetActivity(bool Active);
 	virtual ~CButton();
 };

@@ -3,14 +3,14 @@
 
 #include "element.h"
 
-class CNand:public CElement
+class CNand :public CElement
 {
- public:
-	void DrawElem(int Colour=0);
-	TOutput GetOutput(int AskElemNum,int MaxNum) ;
+public:
+	void DrawElem(int Colour = 0);
+	TOutput GetOutput(int AskElemNum, int MaxNum);
 	void ClickElement();
 	TElementType ElementType();
-	CNand(int X,int Y,int Colour=0);
+	CNand(int X, int Y, int Colour = 0);
 };
 
 #endif
