@@ -1,6 +1,6 @@
 #include "wire.h"
 #include "gate.h"
-
+#include "stdafx.h"
 CWire::CWire(int X, int Y, int Colour, char FromJunction, CElement*PrevWire)
 {
 	X1 = X;

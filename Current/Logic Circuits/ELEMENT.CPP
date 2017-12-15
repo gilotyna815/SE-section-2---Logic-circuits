@@ -1,6 +1,6 @@
 #include "element.h"
 #include "gate.h"
-
+#include "stdafx.h"
 CElement::~CElement()
 {}
 

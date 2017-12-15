@@ -41,6 +41,7 @@ class CWindow
 	//char Work();//praca u¾ytkownika w oknie
 	CWindow(HDC currentWin, int Number,char IsPrev,char IsNext,char NewPossib,char IsNew);
 	~CWindow();
+	char Work();
 };
 
 #endif

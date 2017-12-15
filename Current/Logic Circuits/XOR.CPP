@@ -1,6 +1,6 @@
 #include "xor.h"
 #include "gate.h"
-
+#include "stdafx.h"
 CXor::CXor(int X, int Y, int Colour)
 {
 	X1 = X;

@@ -7,6 +7,8 @@
 #include "smallwin.h"
 
 #define MAX_LOADSTRING 100
+#define IDC_SE_CURRENT 100
+#define IDI_SE_CURRENT 100
 
 // Zmienne globalne:
 HINSTANCE hInst;                                // bie¿¹ce wyst¹pienie
