@@ -29,19 +29,19 @@ void CXor::DrawElem(int Colour)
 		}
 	}
 	//setcolor(Colour);	//todo
-	drawPie(GetDC(GetActiveWindow()), X1 + 1, Y1 + 14, 315, 54, 9);
-	drawPie(GetDC(GetActiveWindow()), X1 + 5, Y1 + 14, 315, 54, 9);//drugi ˆuk z lewej
+	drawArc(GetDC(GetActiveWindow()), X1 + 1, Y1 + 14, 315, 54, 9);
+	drawArc(GetDC(GetActiveWindow()), X1 + 5, Y1 + 14, 315, 54, 9);//drugi ï¿½uk z lewej
 	drawLine(GetDC(GetActiveWindow()), X1 + 3, Y1 + 12, X1 + 8, Y1 + 12);//we g.
 	drawLine(GetDC(GetActiveWindow()), X1 + 3, Y1 + 17, X1 + 8, Y1 + 17);//we d.
-	drawPie(GetDC(GetActiveWindow()), X1 + 10, Y1 + 14, 270, 90, 8);//ˆuk z prawej
-	drawLine(GetDC(GetActiveWindow()), X1 + 19, Y1 + 14, X1 + 24, Y1 + 14);//wyj˜cie
+	drawArc(GetDC(GetActiveWindow()), X1 + 10, Y1 + 14, 270, 90, 8);//ï¿½uk z prawej
+	drawLine(GetDC(GetActiveWindow()), X1 + 19, Y1 + 14, X1 + 24, Y1 + 14);//wyjï¿½cie
 }
 
 TOutput CXor::GetOutput(int AskElemNum, int MaxNum)
 {
 	if (AskElemNum == MaxNum) return Output;
-	//rekurencja wpadˆa w p©tl© sprz©¾enia zwrotnego
-	if (Output == error)	Output = low;//warto˜† wyj˜ciowa
+	//rekurencja wpadï¿½a w pï¿½tlï¿½ sprzï¿½ï¿½enia zwrotnego
+	if (Output == error)	Output = low;//wartoï¿½ï¿½ wyjï¿½ciowa
 	TOutput Value = low;
 	for (int i = 0; i < InNum; i++)
 	{

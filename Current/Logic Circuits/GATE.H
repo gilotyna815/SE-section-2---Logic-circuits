@@ -12,6 +12,10 @@
 #include <malloc.h>
 #include <process.h>
 
+#include <windows.h>
+#include <objidl.h>
+#include <gdiplus.h>
+
 #define BackSpace 8
 #define Enter 13
 #define Esc 27
@@ -46,11 +50,18 @@ enum TOutput { low = 0, high = 1, error = -1 };
 
 //int CheckMouse();
 
+
+
 void Control();
 
 void FirstInfo();
 
 char ConfirmQuit();
+
+void drawPie(HDC hdc, int x, int y, float startAngle, float sweepAngle, int width);
+void drawArc(HDC hdc, int x, int y, float startAngle, float sweepAngle, int width);
 void drawLine(HDC hdc, int x1, int y1, int x2, int y2);
+void drawBar(HDC hdc, int x1, int y1, int x2, int y2);
+void drawBasket(HDC hdc, int X, int Y);
 
 //main();

@@ -1,21 +1,27 @@
-// Main.cpp: Okreœla punkt wejœcia dla aplikacji.
+// Main.cpp: Okreï¿½la punkt wejï¿½cia dla aplikacji.
 //
 
 #include "stdafx.h"
-#include "gate.h"
 #include "window.h"
 #include "smallwin.h"
+#include <windows.h>
+#include <objidl.h>
+#include <gdiplus.h>
+
+using namespace Gdiplus;
+#pragma comment (lib,"Gdiplus.lib")
+
 
 #define MAX_LOADSTRING 100
 #define IDC_SE_CURRENT 100
 #define IDI_SE_CURRENT 100
 
 // Zmienne globalne:
-HINSTANCE hInst;                                // bie¿¹ce wyst¹pienie
-WCHAR szTitle[MAX_LOADSTRING];                  // Tekst paska tytu³u
-WCHAR szWindowClass[MAX_LOADSTRING];            // nazwa klasy okna g³ównego
+HINSTANCE hInst;                                // bieï¿½ï¿½ce wystï¿½pienie
+WCHAR szTitle[MAX_LOADSTRING];                  // Tekst paska tytuï¿½u
+WCHAR szWindowClass[MAX_LOADSTRING];            // nazwa klasy okna gï¿½ï¿½wnego
 
-// Przeka¿ dalej deklaracje funkcji do³¹czonych w tym module kodu:
+// Przekaï¿½ dalej deklaracje funkcji doï¿½ï¿½czonych w tym module kodu:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
@@ -29,9 +35,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	UNREFERENCED_PARAMETER(hPrevInstance);
 	UNREFERENCED_PARAMETER(lpCmdLine);
 
-	// TODO: W tym miejscu umieœæ kod.
+	// TODO: W tym miejscu umieï¿½ï¿½ kod.
 
-	// Zainicjuj ci¹gi globalne
+	// Zainicjuj ciï¿½gi globalne
 	LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
 	LoadStringW(hInstance, IDC_SE_CURRENT, szWindowClass, MAX_LOADSTRING);
 	MyRegisterClass(hInstance);
@@ -56,7 +62,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	// ---------------------------------------------------------------------------------------------------------
 
 
-	// G³ówna pêtla wiadomoœci:
+	// Gï¿½ï¿½wna pï¿½tla wiadomoï¿½ci:
 	while (GetMessage(&msg, nullptr, 0, 0))
 	{
 		if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
@@ -76,7 +82,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 //
 //  FUNKCJA: MyRegisterClass()
 //
-//  CEL: Rejestruje klasê okna.
+//  CEL: Rejestruje klasï¿½ okna.
 //
 ATOM MyRegisterClass(HINSTANCE hInstance)
 {
@@ -102,16 +108,16 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 //
 //   FUNKCJA: InitInstance(HINSTANCE, int)
 //
-//   CEL: Zapisuje dojœcie wyst¹pienia i tworzy okno g³ówne
+//   CEL: Zapisuje dojï¿½cie wystï¿½pienia i tworzy okno gï¿½ï¿½wne
 //
 //   KOMENTARZE:
 //
-//        W tej funkcji dojœcie wyst¹pienia jest zapisywane w zmiennej globalnej i
-//        jest tworzone i wyœwietlane okno g³ówne programu.
+//        W tej funkcji dojï¿½cie wystï¿½pienia jest zapisywane w zmiennej globalnej i
+//        jest tworzone i wyï¿½wietlane okno gï¿½ï¿½wne programu.
 //
 BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
-	hInst = hInstance; // Przechowuj dojœcie wyst¹pienia w zmiennej globalnej
+	hInst = hInstance; // Przechowuj dojï¿½cie wystï¿½pienia w zmiennej globalnej
 
 	HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
 		CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
@@ -131,11 +137,11 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 //
 //  FUNKCJA: WndProc(HWND, UINT, WPARAM, LPARAM)
 //
-//  CEL: Przetwarza wiadomoœci dla okna g³ównego.
+//  CEL: Przetwarza wiadomoï¿½ci dla okna gï¿½ï¿½wnego.
 //
-//  WM_COMMAND — przetwarzaj menu aplikacji
-//  WM_PAINT — pomaluj okno g³ówne
-//  WM_DESTROY — opublikuj komunikat o rezygnacji i wróæ
+//  WM_COMMAND ï¿½ przetwarzaj menu aplikacji
+//  WM_PAINT ï¿½ pomaluj okno gï¿½ï¿½wne
+//  WM_DESTROY ï¿½ opublikuj komunikat o rezygnacji i wrï¿½ï¿½
 //
 //
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
@@ -163,7 +169,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	{
 		PAINTSTRUCT ps;
 		HDC hdc = BeginPaint(hWnd, &ps);
-		// TODO: tutaj dodaj kod rysowania u¿ywaj¹cy elementu hdc...
+		// TODO: tutaj dodaj kod rysowania uï¿½ywajï¿½cy elementu hdc...
 		EndPaint(hWnd, &ps);
 	}
 	break;
@@ -176,7 +182,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	return 0;
 }
 
-//Procedura obs³ugi wiadomoœci dla okna informacji o programie.
+//Procedura obsï¿½ugi wiadomoï¿½ci dla okna informacji o programie.
 INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	UNREFERENCED_PARAMETER(lParam);
@@ -228,24 +234,87 @@ INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 	}
 	return 1;
 }*/
-
+//draws a pie centered at (x,y) with radius given by width. The pie travels from startAngle to sweepAngle
+void drawPie(HDC hdc, int x, int y, float startAngle, float sweepAngle, int width) {
+	
+		sweepAngle = sweepAngle*2;
+		y = (y - width);
+		x = (x - width);
+		width = width * 2;
+		int height = width;
+		Graphics graphics(hdc);
+		// Draw the pie.
+		Pen pen(Color(255, 0, 0, 0), 1.0f); //Alpha(transparency), Red, Green, Blue, penWidth
+		graphics.DrawPie(&pen, x, y, width, height, startAngle, sweepAngle);
+	}
+//draws an arc centered at (x,y) with radius given by width. The arc travels from startAngle to sweepAngle
+void drawArc(HDC hdc, int x, int y, float startAngle, float sweepAngle, int width) {
+	
+		sweepAngle = sweepAngle * 2;
+		y = (y - width);
+		x = (x - width);
+		width = width * 2;
+		int height = width;
+		Graphics graphics(hdc);
+		// Draw the pie.
+		Pen pen(Color(255, 0, 0, 0), 1.0f); //Alpha(transparency), Red, Green, Blue, penWidth
+		graphics.DrawArc(&pen, x, y, width, height, startAngle, sweepAngle);
+	}
+//draws line from point (x1,y1) to point (x2,y2)
 void drawLine(HDC hdc, int x1, int y1, int x2, int y2)
 {
-	Gdiplus::Graphics graphics(hdc);
-	Gdiplus::Pen pen(Gdiplus::Color(100, 0, 0, 0), 5.0f);
+	Graphics graphics(hdc);
+	Pen pen(Color(100, 0, 0, 0), 5.0f);
 	graphics.DrawLine(&pen, x1, y1, x2, y2);
 }
+//draws basket with left upper corner coordinate (X,Y)
+void drawBasket(HDC hdc, int X, int Y)
+{
+	Graphics graphics(hdc);
+	Pen basketPen(Color(255, 0, 0, 255), 1.0f); //Alpha(transparency), Red, Green, Blue, penWidth
+	Pen squarePen(Color(255, 0, 0, 0), 1.0f);
+	Pen fatPen(Color(255, 0, 0, 255), 3.0f);
+	//Square containing basket
+	graphics.DrawLine(&squarePen, X, Y, X, Y + 30);
+	graphics.DrawLine(&squarePen, X, Y + 30, X + 26, Y + 30);
+	graphics.DrawLine(&squarePen, X + 26, Y + 30, X + 26, Y);
+	graphics.DrawLine(&squarePen, X + 26, Y, X, Y);
+	//basket
+	graphics.DrawLine(&fatPen, X + 6, Y + 27, X + 20, Y + 27); //bottom
+	graphics.DrawLine(&basketPen, X + 6, Y + 26, X + 2, Y + 4);
+	graphics.DrawLine(&basketPen, X + 20, Y + 26, X + 24, Y + 4);
+	graphics.DrawLine(&basketPen, X + 8, Y + 10, X + 9, Y + 26);
+	graphics.DrawLine(&basketPen, X + 13, Y + 10, X + 13, Y + 26);
 
+	graphics.DrawLine(&basketPen, X + 18, Y + 10, X + 17, Y + 26);
+	graphics.DrawLine(&basketPen, X + 4, Y + 10, X + 22, Y + 10);
+	graphics.DrawLine(&basketPen, X + 5, Y + 14, X + 21, Y + 14);
+	graphics.DrawLine(&basketPen, X + 5, Y + 18, X + 21, Y + 18);
+	graphics.DrawLine(&basketPen, X + 6, Y + 22, X + 20, Y + 22);
+
+}
+//draws a rectangle with: 
+//left upper corner coordinate (x1,y1)
+//right bottom corner coordinate (x2, y2)
+void drawBar(HDC hdc, int x1, int y1, int x2, int y2) {
+	int width = x2 - x1;
+	int height = y2 - y1;
+	Graphics graphics(hdc);
+	//Pen pen(Color(100, 0, 0, 0), 5.0f);
+	SolidBrush blackBrush(Color(255, 0, 0, 0));
+	//graphics.DrawRectangle(&pen, x1, y1, width, height);
+	graphics.FillRectangle(&blackBrush, x1, y1, width, height);
+}
 
 void Control()
 {
 	int CurrentWinNum = 0;//numer aktualnie otwartego okna
-	int TotalWinNum = 1;//ilo˜† wszystkich otwartych okien
-	char NewPossib = 1;//flaga m¢wi¥ca, czy mo¾e powsta† nowe okno
-	char IsNew = 1;//flaga m¢wi¥ca, czy okno jest nowe
-	char IsPrev;//flaga m¢wi¥ca, czy istnieje okno wcze˜niejsze
-	char IsNext;//flaga m¢wi¥ca, czy istnieje okno nast©pne
-	int TabWin[MaxWinNum];//tablica flag m¢wi¥cych, czy okno istnieje
+	int TotalWinNum = 1;//iloï¿½ï¿½ wszystkich otwartych okien
+	char NewPossib = 1;//flaga mï¿½wiï¿½ca, czy moï¿½e powstaï¿½ nowe okno
+	char IsNew = 1;//flaga mï¿½wiï¿½ca, czy okno jest nowe
+	char IsPrev;//flaga mï¿½wiï¿½ca, czy istnieje okno wczeï¿½niejsze
+	char IsNext;//flaga mï¿½wiï¿½ca, czy istnieje okno nastï¿½pne
+	int TabWin[MaxWinNum];//tablica flag mï¿½wiï¿½cych, czy okno istnieje
 	for (int i = 0; i < MaxWinNum; i++) TabWin[i] = 0;
 	TabWin[0] = 1;
 	do
@@ -267,12 +336,12 @@ void Control()
 		CWindow*Window = new CWindow(GetDC(GetActiveWindow()), CurrentWinNum + 1, IsPrev, IsNext, NewPossib, IsNew);
 		IsNew = 0;
 		char WinResult = Window->Work();	//cursor
-		if (WinResult == 0)//okno zostaje zamkni©te
+		if (WinResult == 0)//okno zostaje zamkniï¿½te
 		{
 			TabWin[CurrentWinNum] = 0;
 			TotalWinNum--;
 			if (NewPossib == 0) NewPossib = 1;
-			//skasowane zostaˆo jakie˜ okno, wi©c mo¾na utworzy† nowe okno
+			//skasowane zostaï¿½o jakieï¿½ okno, wiï¿½c moï¿½na utworzyï¿½ nowe okno
 			int i;
 			for (i = CurrentWinNum + 1; i < MaxWinNum; i++)
 				if (TabWin[i] == 1)
@@ -280,35 +349,35 @@ void Control()
 					CurrentWinNum = i;
 					break;
 				}
-			if (i >= MaxWinNum)//nie zostaˆo znalezione nast©pne otwarte okno
+			if (i >= MaxWinNum)//nie zostaï¿½o znalezione nastï¿½pne otwarte okno
 				for (i = CurrentWinNum - 1; i >= 0; i--)
 					if (TabWin[i] == 1)
 					{
 						CurrentWinNum = i;
 						break;
 					}
-			if (i < 0) TotalWinNum = 0;//okno zamkni©te byˆo ostatnie
+			if (i < 0) TotalWinNum = 0;//okno zamkniï¿½te byï¿½o ostatnie
 		}
 		else
-			if (WinResult == -1)//wy˜wietlone ma by† okno poprzednie
+			if (WinResult == -1)//wyï¿½wietlone ma byï¿½ okno poprzednie
 			{
 				int i;
 				for (i = CurrentWinNum - 1; i >= 0; i--)
 					if (TabWin[i] == 1) break;
 				CurrentWinNum = i;
-				if (i < 0) TotalWinNum = 0;//wyst¥piˆ bˆ¥d
+				if (i < 0) TotalWinNum = 0;//wystï¿½piï¿½ bï¿½ï¿½d
 			}
 			else
-				if (WinResult == 1)//wy˜wietlone ma by† okno nast©pne
+				if (WinResult == 1)//wyï¿½wietlone ma byï¿½ okno nastï¿½pne
 				{
 					int i;
 					for (i = CurrentWinNum + 1; i < MaxWinNum; i++)
 						if (TabWin[i] == 1) break;
 					CurrentWinNum = i;
-					if (i >= MaxWinNum) TotalWinNum = 0;//wyst¥piˆ bˆ¥d
+					if (i >= MaxWinNum) TotalWinNum = 0;//wystï¿½piï¿½ bï¿½ï¿½d
 				}
 				else
-					if (WinResult == 2)//ma powsta† nowe okno
+					if (WinResult == 2)//ma powstaï¿½ nowe okno
 					{
 						int i;
 						for (i = 0; i < MaxWinNum; i++)
@@ -316,9 +385,9 @@ void Control()
 						CurrentWinNum = i;
 						TabWin[CurrentWinNum] = 1;
 						TotalWinNum++;
-						if (i >= MaxWinNum) TotalWinNum = 0;//wyst¥piˆ bˆ¥d
+						if (i >= MaxWinNum) TotalWinNum = 0;//wystï¿½piï¿½ bï¿½ï¿½d
 						if (i == MaxWinNum - 1) NewPossib = 0;
-						IsNew = 1;//kolejne okno b©dzie nowym oknem
+						IsNew = 1;//kolejne okno bï¿½dzie nowym oknem
 					}
 		delete Window;
 	} while (TotalWinNum > 0);
