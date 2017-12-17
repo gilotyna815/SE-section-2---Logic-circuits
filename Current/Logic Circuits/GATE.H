@@ -15,6 +15,16 @@
 #include <windows.h>
 #include <objidl.h>
 #include <gdiplus.h>
+using namespace Gdiplus;
+#pragma comment (lib,"Gdiplus.lib")
+
+//Colors
+Color black(255, 0, 0, 0);
+Color red(255, 255, 0, 0);
+Color blue(255, 0, 0, 255);
+Color gray(255, 169, 169, 169);
+Color orange(255, 255, 165, 0);
+Color white(255,255,255,255);
 
 #define BackSpace 8
 #define Enter 13
@@ -58,10 +68,14 @@ void FirstInfo();
 
 char ConfirmQuit();
 
-void drawPie(HDC hdc, int x, int y, float startAngle, float sweepAngle, int width);
-void drawArc(HDC hdc, int x, int y, float startAngle, float sweepAngle, int width);
-void drawLine(HDC hdc, int x1, int y1, int x2, int y2);
-void drawBar(HDC hdc, int x1, int y1, int x2, int y2);
+void drawPie(HDC hdc, int x, int y, float startAngle, float sweepAngle, int width, Color color);
+void drawArc(HDC hdc, int x, int y, float startAngle, float sweepAngle, int width, Color color);
+void drawLine(HDC hdc, int x1, int y1, int x2, int y2, Color color);
+void drawBar(HDC hdc, int x1, int y1, int x2, int y2, Color color);
+void drawCircle(HDC hdc, int x, int y, int radius, Color color);
 void drawBasket(HDC hdc, int X, int Y);
 
+
+void putPixel(HDC hdc, int x, int y, Color color);
+//void drawImage(HDC hdc, int X, int Y, HDC hdcMem, HGDIOBJ oldBitmap, BITMAP bitmap, HBITMAP hBitmap);
 //main();

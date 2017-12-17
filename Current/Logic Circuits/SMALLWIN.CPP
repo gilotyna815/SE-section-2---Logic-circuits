@@ -133,7 +133,7 @@ void CSmallWindow::Read()
 	//setfillstyle(1, BackgroundColour);
 	SetBkColor(GetDC(GetActiveWindow()), BackgroundColour);
 	//bar(X1 + 50, Y2 - 55, X1 + 150, Y2 - 40);//pole do odczytu
-	drawLine(GetDC(GetActiveWindow()), X1 + 50, Y2 - 55, X1 + 150, Y2 - 40);
+	drawLine(GetDC(GetActiveWindow()), X1 + 50, Y2 - 55, X1 + 150, Y2 - 40, black);
 	TmpText[Length + 1] = '\x0';
 	if ((int)TmpText[Length] == BackSpace&&Length > 0)
 	{
@@ -194,17 +194,17 @@ void CSmallWindow::DrawSmallWin()
 {
 	//setfillstyle(1, 8);
 	//setcolor(8);	//todo
-	drawLine(GetDC(GetActiveWindow()), X1, Y2, X2, Y2);
-	drawLine(GetDC(GetActiveWindow()), X2, Y2, X2, Y1);
-	drawLine(GetDC(GetActiveWindow()), X2, Y1, X1, Y1);
+	drawLine(GetDC(GetActiveWindow()), X1, Y2, X2, Y2, black);
+	drawLine(GetDC(GetActiveWindow()), X2, Y2, X2, Y1, black);
+	drawLine(GetDC(GetActiveWindow()), X2, Y1, X1, Y1, black);
 	//setfillstyle(1, HeadingColour);	//todo
 	//bar(X1 + 1, Y1 + 1, X2 - 1, Y1 + 20);
-	drawLine(GetDC(GetActiveWindow()), X1 + 1, Y1 + 1, X2 - 1, Y1 + 20);
+	drawLine(GetDC(GetActiveWindow()), X1 + 1, Y1 + 1, X2 - 1, Y1 + 20, black);
 	//setcolor(HeadingTextColour);	//todo
 	TextOut(GetDC(GetActiveWindow()), (int)(X1 + X2) / 2 - (strlen(HeadingText) / 2) * 9, Y1 + 8, (LPCWSTR)HeadingText, wcslen((LPCWSTR)HeadingText));
 	//setfillstyle(1, FrameColour);	//todo
 	//bar(X1 + 1, Y1 + 21, X2 - 1, Y2 - 1);//szare pole
-	drawLine(GetDC(GetActiveWindow()), X1 + 1, Y1 + 21, X2 - 1, Y2 - 1);
+	drawLine(GetDC(GetActiveWindow()), X1 + 1, Y1 + 21, X2 - 1, Y2 - 1, black);
 	//setfillstyle(1, CustomTextColour);	//todo
 	//setcolor(CustomTextColour);	//todo
 	for (int i = 0; i < LinesNum; i++)
@@ -217,12 +217,12 @@ void CSmallWindow::DrawSmallWin()
 		//setfillstyle(1, BackgroundColour);
 		SetBkColor(GetDC(GetActiveWindow()), BackgroundColour);
 		//bar(X1 + 50, Y2 - 55, X1 + 150, Y2 - 40);//pole do odczytu
-		drawLine(GetDC(GetActiveWindow()), X1 + 50, Y2 - 55, X1 + 150, Y2 - 40);
+		drawLine(GetDC(GetActiveWindow()), X1 + 50, Y2 - 55, X1 + 150, Y2 - 40, black);
 		//setcolor(LineColour);	//todo
-		drawLine(GetDC(GetActiveWindow()), X1 + 49, Y2 - 56, X1 + 49, Y2 - 39);
-		drawLine(GetDC(GetActiveWindow()), X1 + 49, Y2 - 39, X1 + 151, Y2 - 39);
-		drawLine(GetDC(GetActiveWindow()), X1 + 151, Y2 - 39, X1 + 151, Y2 - 56);
-		drawLine(GetDC(GetActiveWindow()), X1 + 151, Y2 - 56, X1 + 49, Y2 - 56);
+		drawLine(GetDC(GetActiveWindow()), X1 + 49, Y2 - 56, X1 + 49, Y2 - 39, black);
+		drawLine(GetDC(GetActiveWindow()), X1 + 49, Y2 - 39, X1 + 151, Y2 - 39, black);
+		drawLine(GetDC(GetActiveWindow()), X1 + 151, Y2 - 39, X1 + 151, Y2 - 56, black);
+		drawLine(GetDC(GetActiveWindow()), X1 + 151, Y2 - 56, X1 + 49, Y2 - 56, black);
 	}
 	for (int i = 0; i < ButtonNum; i++)
 		TabBut[i]->DrawButton();

@@ -29,12 +29,12 @@ void CNor::DrawElem(int Colour)
 		}
 	}
 	//setcolor(Colour); to do
-	drawPie(GetDC(GetActiveWindow()), X1 + 3, Y1 + 14, 315, 54, 9);//ˆuk z lewej
-	drawLine(GetDC(GetActiveWindow()), X1 + 3, Y1 + 12, X1 + 10, Y1 + 12);//we g.
-	drawLine(GetDC(GetActiveWindow()), X1 + 3, Y1 + 17, X1 + 10, Y1 + 17);//we d.
-	drawPie(GetDC(GetActiveWindow()), X1 + 8, Y1 + 14, 270, 90, 8);//ˆuk z prawej
-	drawCircle(GetDC(GetActiveWindow()), X1 + 18, Y1 + 14, 2);//negacja
-	drawLine(GetDC(GetActiveWindow()), X1 + 21, Y1 + 14, X1 + 24, Y1 + 14);//wyj˜cie
+	drawArc(GetDC(GetActiveWindow()), X1 + 3, Y1 + 14, 315, 54, 9, black);//ˆuk z lewej
+	drawLine(GetDC(GetActiveWindow()), X1 + 3, Y1 + 12, X1 + 10, Y1 + 12, black);//we g.
+	drawLine(GetDC(GetActiveWindow()), X1 + 3, Y1 + 17, X1 + 10, Y1 + 17, black);//we d.
+	drawArc(GetDC(GetActiveWindow()), X1 + 8, Y1 + 14, 270, 90, 8, black);//ˆuk z prawej
+	drawCircle(GetDC(GetActiveWindow()), X1 + 18, Y1 + 14, 2, black);//negacja
+	drawLine(GetDC(GetActiveWindow()), X1 + 21, Y1 + 14, X1 + 24, Y1 + 14, black);//wyj˜cie
 }
 
 TOutput CNor::GetOutput(int AskElemNum, int MaxNum)

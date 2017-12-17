@@ -17,6 +17,7 @@ CJunction::CJunction(int X, int Y, int Colour)
 
 void CJunction::DrawElem(int Colour)
 {
+	Color color = black;
 	if (Colour == 0)
 	{
 		switch (Output)
@@ -26,9 +27,14 @@ void CJunction::DrawElem(int Colour)
 		case error:Colour = ErrorColour; break;
 		}
 	}
-	//setcolor(Colour);
-	setfillstyle(1, Colour);
-	pieslice(X1, Y1, 0, 360, 2);	//todo
+	//setfillstyle(1, Colour);
+
+	switch (Colour) {
+		case LowColour: color = blue;
+		case HighColour: color = red;
+		case ErrorColour: color = orange;
+	}
+	drawPie(GetDC(GetActiveWindow()), X1, Y1, 0, 360, 2, color);	//todo
 }
 
 TOutput CJunction::GetOutput(int AskElemNum,int MaxNum)

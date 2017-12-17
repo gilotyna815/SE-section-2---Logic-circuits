@@ -28,11 +28,11 @@ void CAnd::DrawElem(int Colour)
 		}
 	}
 	//setcolor(Colour);	//set colour of lines - to do
-	drawLine(GetDC(GetActiveWindow()), X1 + 8, Y1 + 7, X1 + 8, Y1 + 22);//pionowa linia
-	drawLine(GetDC(GetActiveWindow()), X1 + 3, Y1 + 12, X1 + 8, Y1 + 12);//wej˜cie g¢rne
-	drawLine(GetDC(GetActiveWindow()), X1 + 3, Y1 + 17, X1 + 8, Y1 + 17);//wej˜cie dolne
-	drawPie(GetDC(GetActiveWindow()), X1 + 8, Y1 + 14, 270, 90, 8);//ˆuk
-	drawLine(GetDC(GetActiveWindow()), X1 + 17, Y1 + 14, X1 + 24, Y1 + 14);//wyj˜cie
+	drawLine(GetDC(GetActiveWindow()), X1 + 8, Y1 + 7, X1 + 8, Y1 + 22,black);//pionowa linia
+	drawLine(GetDC(GetActiveWindow()), X1 + 3, Y1 + 12, X1 + 8, Y1 + 12, black);//wej˜cie g¢rne
+	drawLine(GetDC(GetActiveWindow()), X1 + 3, Y1 + 17, X1 + 8, Y1 + 17, black);//wej˜cie dolne
+	drawPie(GetDC(GetActiveWindow()), X1 + 8, Y1 + 14, 270, 90, 8, black);//ˆuk
+	drawLine(GetDC(GetActiveWindow()), X1 + 17, Y1 + 14, X1 + 24, Y1 + 14, black);//wyj˜cie
 }
 
 TOutput CAnd::GetOutput(int AskElemNum, int MaxNum)

@@ -24,13 +24,13 @@ void CMenuButton::DrawButton()
 {
 	//setfillstyle(1,LineColour);
 	//setcolor(LineColour);	//todo
-	drawLine(GetDC(GetActiveWindow()), X1, Y1, X2, Y1);
-	drawLine(GetDC(GetActiveWindow()), X2, Y1, X2, Y2);
-	drawLine(GetDC(GetActiveWindow()), X2, Y2, X1, Y2);
-	drawLine(GetDC(GetActiveWindow()), X1, Y2, X1, Y1);
+	drawLine(GetDC(GetActiveWindow()), X1, Y1, X2, Y1, black);
+	drawLine(GetDC(GetActiveWindow()), X2, Y1, X2, Y2, black);
+	drawLine(GetDC(GetActiveWindow()), X2, Y2, X1, Y2, black);
+	drawLine(GetDC(GetActiveWindow()), X1, Y2, X1, Y1, black);
 	//setfillstyle(1,ButtonColour);	//todo
 	//bar(X1+1,Y1+1,X2-1,Y2-1);
-	drawLine(GetDC(GetActiveWindow()), X1 + 1, Y1 + 1, X2 - 1, Y2 - 1);
+	drawLine(GetDC(GetActiveWindow()), X1 + 1, Y1 + 1, X2 - 1, Y2 - 1, black);
 	//setfillstyle(1,DrawingColour);	//todo
 	//setcolor(DrawingColour);	//todo
 	int X;

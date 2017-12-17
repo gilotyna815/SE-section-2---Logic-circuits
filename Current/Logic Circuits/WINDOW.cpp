@@ -75,7 +75,7 @@ CWindow::CWindow(HDC currentWin, int Number, char IsPrev, char IsNext, char NewP
 	ImageSize = imagesize(100, 155, 168, 170);
 	ImageTab[NumberOfImages - 1] = new[ImageSize];
 	//bar(100,155,168,170);
-	drawLine(GetDC(GetActiveWindow()), 100, 155, 168, 170);	//maybe we should use rectangle?
+	drawBar(GetDC(GetActiveWindow()), 100, 155, 168, 170, black);
 	//outtextxy(107,160,"Linking");
 	TextOut(GetDC(GetActiveWindow()), 107, 160, L"Linking", 7);
 	getimage(100, 155, 168, 170, ImageTab[NumberOfImages - 1]);
@@ -349,7 +349,7 @@ char CWindow::Load(char*Path)
 			//setfillstyle(1,BackgroundColour);
 			SetBkColor(GetDC(GetActiveWindow()), BackgroundColour);
 			//bar(200,150,400,300);
-			drawLine(GetDC(GetActiveWindow()), 200, 150, 400, 300);
+			drawLine(GetDC(GetActiveWindow()), 200, 150, 400, 300, black);
 			//reg.r_ax=0x1;
 			//intr(0x33,&reg);//pokazanie kursora
 			delete PathWin;
@@ -361,7 +361,7 @@ char CWindow::Load(char*Path)
 		//setfillstyle(1,BackgroundColour);
 		SetBkColor(GetDC(GetActiveWindow()), BackgroundColour);
 		//bar(200,150,400,300);
-		drawLine(GetDC(GetActiveWindow()), 200, 150, 400, 300);
+		drawLine(GetDC(GetActiveWindow()), 200, 150, 400, 300, black);
 		//reg.r_ax=0x1;
 		//intr(0x33,&reg);//pokazanie kursora
 		Path = new char[PathWin->GetReadTextLength() + 4];
@@ -419,14 +419,14 @@ char CWindow::Load(char*Path)
 	//setfillstyle(1,BackgroundColour);
 	SetBkColor(GetDC(GetActiveWindow()), BackgroundColour);
 	//bar(31,61,610,440);
-	drawLine(GetDC(GetActiveWindow()), 31, 61, 610, 440);
+	drawBar(GetDC(GetActiveWindow()), 31, 61, 610, 440, black);
 	//??
 	//setcolor(FrameColour);
 	//setfillstyle(1,FrameColour);
 	//bar(31,441,610,478);
-	drawLine(GetDC(GetActiveWindow()), 31, 441, 610, 478);
+	drawBar(GetDC(GetActiveWindow()), 31, 441, 610, 478, black);
 	//bar(611,21,638,478);
-	drawLine(GetDC(GetActiveWindow()), 611, 21, 638, 478);
+	drawBar(GetDC(GetActiveWindow()), 611, 21, 638, 478, black);
 	return 1;
 }
 
@@ -468,7 +468,8 @@ char CWindow::Save(char*Path)
 			//setfillstyle(1,BackgroundColour);
 			SetBkColor(GetDC(GetActiveWindow()), BackgroundColour);
 			//bar(200,150,400,300);
-			drawLine(GetDC(GetActiveWindow()), 200, 150, 400, 300);	//maybe we should use rectangle?
+			drawBar(GetDC(GetActiveWindow()), 200, 150, 400, 300, black);
+			//drawLine(GetDC(GetActiveWindow()), 200, 150, 400, 300, black);	//maybe we should use rectangle?
 			//reg.r_ax=0x1;
 			//intr(0x33,&reg);//pokazanie kursora
 			delete PathWin;
@@ -480,7 +481,8 @@ char CWindow::Save(char*Path)
 		//setfillstyle(1,BackgroundColour);
 		SetBkColor(GetDC(GetActiveWindow()), BackgroundColour);
 		//bar(200,150,400,300);
-		drawLine(GetDC(GetActiveWindow()), 200, 150, 400, 300);	//maybe we should use rectangle?
+		drawBar(GetDC(GetActiveWindow()), 200, 150, 400, 300, black);
+		//drawLine(GetDC(GetActiveWindow()), 200, 150, 400, 300, black);	//maybe we should use rectangle?
 		//reg.r_ax=0x1;
 		//intr(0x33,&reg);//pokazanie kursora
 		Path = new char[PathWin->GetReadTextLength() + 4];
@@ -549,7 +551,7 @@ void CWindow::Info()
 	//setfillstyle(1,BackgroundColour);
 	SetBkColor(GetDC(GetActiveWindow()), BackgroundColour);
 	//bar(155,130,470,300);//zamalowanie okienka
-	drawLine(GetDC(GetActiveWindow()), 155, 130, 470, 300);
+	drawBar(GetDC(GetActiveWindow()), 155, 130, 470, 300, black);
 	//reg.r_ax=0x1;
 	//intr(0x33,&reg);//pokazanie kursora
 }
@@ -718,29 +720,33 @@ void CWindow::DrawWin(char Mode)	//handle colours
 		//setfillstyle(1,BackgroundColour);
 		//setcolor(BackgroundColour);
 		SetBkColor(GetDC(GetActiveWindow()), BackgroundColour);
-		drawLine(GetDC(GetActiveWindow()), 0, 0, 0, 479);
-		drawLine(GetDC(GetActiveWindow()), 639, 0, 639, 479);
-		drawLine(GetDC(GetActiveWindow()), 0, 479, 639, 479);
-		drawLine(GetDC(GetActiveWindow()), 0, 0, 639, 0);//rysowanie ramki
+		drawLine(GetDC(GetActiveWindow()), 0, 0, 0, 479, black);
+		drawLine(GetDC(GetActiveWindow()), 639, 0, 639, 479, black);
+		drawLine(GetDC(GetActiveWindow()), 0, 479, 639, 479, black);
+		drawLine(GetDC(GetActiveWindow()), 0, 0, 639, 0, black);//rysowanie ramki
 		//setfillstyle(1,FrameColour);
-		drawLine(GetDC(GetActiveWindow()), 1, 21, 638, 60);//pasek na g¢rze	//bar
-		drawLine(GetDC(GetActiveWindow()), 1, 478, 30, 61);//pasek z lewej	//bar
-		DrawBasket(3, 400);//kosz
+		drawBar(GetDC(GetActiveWindow()), 1, 21, 638, 60, black);
+		drawBar(GetDC(GetActiveWindow()), 1, 478, 30, 61, black);
+		//drawLine(GetDC(GetActiveWindow()), 1, 21, 638, 60);//pasek na g¢rze	//bar
+		//drawLine(GetDC(GetActiveWindow()), 1, 478, 30, 61);//pasek z lewej	//bar
+		drawBasket(GetDC(GetActiveWindow()), 3, 400);
+		//DrawBasket(3, 400);//kosz
 	}
 	//setcolor(BackgroundColour);
 	//setfillstyle(1,BackgroundColour);
 	SetBkColor(GetDC(GetActiveWindow()), BackgroundColour);
 	//bar(31,61,610,440);//okno gˆ¢wne
-	drawLine(GetDC(GetActiveWindow()), 31, 61, 610, 440);
+	drawBar(GetDC(GetActiveWindow()), 31, 61, 610, 440, black);
+	//drawLine(GetDC(GetActiveWindow()), 31, 61, 610, 440, black);
 	//setcolor(FrameColour);
 	//setfillstyle(1,FrameColour);
 	//bar(1,478,638,441);//pasek na dole
-	drawLine(GetDC(GetActiveWindow()), 1, 478, 638, 441);
+	drawBar(GetDC(GetActiveWindow()), 1, 478, 638, 441, black);
 	//bar(611,451,638,61);//pasek z prawej
-	drawLine(GetDC(GetActiveWindow()), 611, 451, 638, 61);
+	drawBar(GetDC(GetActiveWindow()), 611, 451, 638, 61, black);
 	//setfillstyle(1,HeadingColour);
 	//bar(1,1,638,20);//pasek g¢rny
-	drawLine(GetDC(GetActiveWindow()), 1, 1, 638, 20);
+	drawBar(GetDC(GetActiveWindow()), 1, 1, 638, 20, black);
 	//setcolor(HeadingTextColour);
 	char Text[12] = "WINDOW ";
 	for (int i = 7; i < 10; i++)
@@ -753,27 +759,6 @@ void CWindow::DrawWin(char Mode)	//handle colours
 		TabElem[i]->DrawElem();
 }
 
-void CWindow::DrawBasket(int X,int Y) //zbysiu pls add details	//todo
-{
-	/*setcolor(LineColour);
-	line(X,Y,X,Y+30);
-	line(X,Y+30,X+26,Y+30);
-	line(X+26,Y+30,X+26,Y);
-	line(X+26,Y,X,Y);//ramka
-	setcolor(BasketColour);
-	setfillstyle(1,BasketColour);
-	bar(X+6,Y+26,X+20,Y+28);//podstawa
-	line(X+6,Y+26,X+2,Y+4);
-	line(X+20,Y+26,X+24,Y+4);//dˆugie linie pionowe
-	line(X+8,Y+10,X+9,Y+26);
-	line(X+13,Y+10,X+13,Y+26);
-	line(X+18,Y+10,X+17,Y+26);//kr¢tsze linie pionowe
-	line(X+4,Y+10,X+22,Y+10);
-	line(X+5,Y+14,X+21,Y+14);
-	line(X+5,Y+18,X+21,Y+18);
-	line(X+6,Y+22,X+20,Y+22);//linie poprzeczne*/
-	
-}
 
 void CWindow::Error(int ErrorNum)
 {
@@ -803,7 +788,7 @@ void CWindow::Error(int ErrorNum)
 	//intr(0x33,&reg);//schowanie kursora
 	SetBkColor(GetDC(GetActiveWindow()), BackgroundColour);
 	//bar(170,150,430,300);//zamalowanie okienka
-	drawLine(GetDC(GetActiveWindow()), 170, 150, 430, 300);
+	drawBar(GetDC(GetActiveWindow()), 170, 150, 430, 300, black);
 	//reg.r_ax=0x1;
 	//intr(0x33,&reg);//pokazanie kursora
 	delete Window;

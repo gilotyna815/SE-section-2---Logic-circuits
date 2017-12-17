@@ -7,7 +7,6 @@
 #include <windows.h>
 #include <objidl.h>
 #include <gdiplus.h>
-
 using namespace Gdiplus;
 #pragma comment (lib,"Gdiplus.lib")
 
@@ -234,37 +233,46 @@ INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 	}
 	return 1;
 }*/
-//draws a pie centered at (x,y) with radius given by width. The pie travels from startAngle to sweepAngle
-void drawPie(HDC hdc, int x, int y, float startAngle, float sweepAngle, int width) {
-	
-		sweepAngle = sweepAngle*2;
-		y = (y - width);
-		x = (x - width);
-		width = width * 2;
-		int height = width;
-		Graphics graphics(hdc);
-		// Draw the pie.
-		Pen pen(Color(255, 0, 0, 0), 1.0f); //Alpha(transparency), Red, Green, Blue, penWidth
-		graphics.DrawPie(&pen, x, y, width, height, startAngle, sweepAngle);
-	}
-//draws an arc centered at (x,y) with radius given by width. The arc travels from startAngle to sweepAngle
-void drawArc(HDC hdc, int x, int y, float startAngle, float sweepAngle, int width) {
-	
-		sweepAngle = sweepAngle * 2;
-		y = (y - width);
-		x = (x - width);
-		width = width * 2;
-		int height = width;
-		Graphics graphics(hdc);
-		// Draw the pie.
-		Pen pen(Color(255, 0, 0, 0), 1.0f); //Alpha(transparency), Red, Green, Blue, penWidth
-		graphics.DrawArc(&pen, x, y, width, height, startAngle, sweepAngle);
-	}
-//draws line from point (x1,y1) to point (x2,y2)
-void drawLine(HDC hdc, int x1, int y1, int x2, int y2)
+//put pixel at (x,y)
+void putPixel(HDC hdc, int x, int y, Color color)
 {
 	Graphics graphics(hdc);
-	Pen pen(Color(100, 0, 0, 0), 5.0f);
+	Pen pen(color, 1.0f); //Alpha(transparency), Red, Green, Blue, penWidth
+	graphics.DrawLine(&pen, x, y, x + 1, y + 1);
+
+}
+//draws a pie centered at (x,y) with radius given by width. The pie travels from startAngle to sweepAngle
+void drawPie(HDC hdc, int x, int y, float startAngle, float sweepAngle, int width, Color color) {
+
+	sweepAngle = sweepAngle * 2;
+	y = (y - width);
+	x = (x - width);
+	width = width * 2;
+	int height = width;
+	Graphics graphics(hdc);
+	// Draw the pie.
+	Pen pen(color, 1.0f); //Alpha(transparency), Red, Green, Blue, penWidth
+	graphics.DrawPie(&pen, x, y, width, height, startAngle, sweepAngle);
+}
+//draws an arc centered at (x,y) with radius given by width. The arc travels from startAngle to sweepAngle
+void drawArc(HDC hdc, int x, int y, float startAngle, float sweepAngle, int width, Color color) {
+
+	sweepAngle = sweepAngle * 2;
+	y = (y - width);
+	x = (x - width);
+	width = width * 2;
+	int height = width;
+	Graphics graphics(hdc);
+	// Draw the pie.
+	Pen pen(color, 1.0f); //Alpha(transparency), Red, Green, Blue, penWidth
+						  //y = (y - 4);
+	graphics.DrawArc(&pen, x, y, width, height, startAngle, sweepAngle);
+}
+//draws line from point (x1,y1) to point (x2,y2)
+void drawLine(HDC hdc, int x1, int y1, int x2, int y2, Color color)
+{
+	Graphics graphics(hdc);
+	Pen pen(color, 5.0f);
 	graphics.DrawLine(&pen, x1, y1, x2, y2);
 }
 //draws basket with left upper corner coordinate (X,Y)
@@ -293,17 +301,41 @@ void drawBasket(HDC hdc, int X, int Y)
 	graphics.DrawLine(&basketPen, X + 6, Y + 22, X + 20, Y + 22);
 
 }
+//draw image with left upper corner at (X,Y)
+//TO DO try to use this function instead of putImage in window.cpp
+void drawImage(HDC hdc, int X, int Y, HDC hdcMem, HGDIOBJ oldBitmap, BITMAP bitmap, HBITMAP hBitmap) {
+	//hdcMem = CreateCompatibleDC(hdc);
+	//oldBitmap = SelectObject(hdcMem, hBitmap);
+	//GetObject(hBitmap, sizeof(bitmap), &bitmap);
+
+	BitBlt(hdc, X, Y, bitmap.bmWidth, bitmap.bmHeight, hdcMem, 0, 0, SRCCOPY);
+
+	SelectObject(hdcMem, oldBitmap);
+	DeleteDC(hdcMem);
+}
 //draws a rectangle with: 
 //left upper corner coordinate (x1,y1)
 //right bottom corner coordinate (x2, y2)
-void drawBar(HDC hdc, int x1, int y1, int x2, int y2) {
+void drawBar(HDC hdc, int x1, int y1, int x2, int y2, Color color) {
 	int width = x2 - x1;
 	int height = y2 - y1;
 	Graphics graphics(hdc);
 	//Pen pen(Color(100, 0, 0, 0), 5.0f);
-	SolidBrush blackBrush(Color(255, 0, 0, 0));
+	SolidBrush blackBrush(color);
 	//graphics.DrawRectangle(&pen, x1, y1, width, height);
 	graphics.FillRectangle(&blackBrush, x1, y1, width, height);
+}
+
+void drawCircle(HDC hdc, int x, int y, int radius, Color color)
+{
+	int X1, Y1;
+	X1 = x - radius;
+	Y1 = y - radius;
+
+	Graphics graphics(hdc);
+	Pen pen(color, 1.0f); //Alpha(transparency), Red, Green, Blue, penWidth
+	graphics.DrawEllipse(&pen, X1, Y1, 2 * radius, 2 * radius);
+
 }
 
 void Control()
@@ -417,7 +449,7 @@ char ConfirmQuit()
 	//setfillstyle(1, BackgroundColour);
 	SetBkColor(GetDC(GetActiveWindow()), BackgroundColour);
 	//bar(155, 130, 470, 300);//zamalowanie okienka
-	drawLine(GetDC(GetActiveWindow()), 155, 130, 470, 300);	//maybe we should use rectangle?
+	drawLine(GetDC(GetActiveWindow()), 155, 130, 470, 300, black);	//maybe we should use rectangle?
 	//reg.r_ax = 0x1;
 	//intr(0x33, &reg);//pokazanie kursora
 	//ShowCursor(true);	//why though
@@ -431,7 +463,7 @@ void FirstInfo()
 	//setcolor(FrameColour);
 	SetBkColor(GetDC(GetActiveWindow()), BackgroundColour);
 	//bar(1, 1, 639, 479);
-	drawLine(GetDC(GetActiveWindow()), 1, 1, 639, 479);	//maybe we should use rectangle?
+	drawLine(GetDC(GetActiveWindow()), 1, 1, 639, 479, black);	//maybe we should use rectangle?
 	char*TabText[2];
 	TabText[0] = new char[40];
 	for (int i = 0; i < 4; i++) TabText[0][i] = ' ';

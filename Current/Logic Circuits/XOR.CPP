@@ -29,12 +29,12 @@ void CXor::DrawElem(int Colour)
 		}
 	}
 	//setcolor(Colour);	//todo
-	drawArc(GetDC(GetActiveWindow()), X1 + 1, Y1 + 14, 315, 54, 9);
-	drawArc(GetDC(GetActiveWindow()), X1 + 5, Y1 + 14, 315, 54, 9);//drugi �uk z lewej
-	drawLine(GetDC(GetActiveWindow()), X1 + 3, Y1 + 12, X1 + 8, Y1 + 12);//we g.
-	drawLine(GetDC(GetActiveWindow()), X1 + 3, Y1 + 17, X1 + 8, Y1 + 17);//we d.
-	drawArc(GetDC(GetActiveWindow()), X1 + 10, Y1 + 14, 270, 90, 8);//�uk z prawej
-	drawLine(GetDC(GetActiveWindow()), X1 + 19, Y1 + 14, X1 + 24, Y1 + 14);//wyj�cie
+	drawArc(GetDC(GetActiveWindow()), X1 + 1, Y1 + 14, 315, 54, 9, black);
+	drawArc(GetDC(GetActiveWindow()), X1 + 5, Y1 + 14, 315, 54, 9, black);//drugi �uk z lewej
+	drawLine(GetDC(GetActiveWindow()), X1 + 3, Y1 + 12, X1 + 8, Y1 + 12, black);//we g.
+	drawLine(GetDC(GetActiveWindow()), X1 + 3, Y1 + 17, X1 + 8, Y1 + 17, black);//we d.
+	drawArc(GetDC(GetActiveWindow()), X1 + 10, Y1 + 14, 270, 90, 8, black);//�uk z prawej
+	drawLine(GetDC(GetActiveWindow()), X1 + 19, Y1 + 14, X1 + 24, Y1 + 14, black);//wyj�cie
 }
 
 TOutput CXor::GetOutput(int AskElemNum, int MaxNum)

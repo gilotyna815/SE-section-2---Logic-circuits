@@ -44,7 +44,7 @@ void CInBus::DrawElem(int Colour)
 	}
 	if (Visible == false) Colour = BackgroundColour;
 	//setcolor(Colour);	//todo
-	drawLine(GetDC(GetActiveWindow()), X1 + 5, 61, X1 + 5, Y2 - 10);//linia gˆ¢wna
+	drawLine(GetDC(GetActiveWindow()), X1 + 5, 61, X1 + 5, Y2 - 10, black);//linia gˆ¢wna
 	if (Visible == true)
 	{
 		char Text[2];
@@ -61,7 +61,7 @@ void CInBus::DrawElem(int Colour)
 	{
 		//setfillstyle(1,FrameColour);	todo
 		//bar(X1,Y2-10,X2,Y2);
-		drawLine(GetDC(GetActiveWindow()), X1, Y2 - 10, X2, Y2);
+		drawLine(GetDC(GetActiveWindow()), X1, Y2 - 10, X2, Y2, black);
 	}
 	Button[0]->DrawButton();
 	for (int i = 0; i < JunctionNum; i++) TabJunction[i]->DrawElem();

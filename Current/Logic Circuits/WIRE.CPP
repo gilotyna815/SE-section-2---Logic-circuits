@@ -44,7 +44,7 @@ void CWire::DrawElem(int Colour)
 		for (int i = 0; i < BreakpointsNum - 1; i++)
 		{
 			drawLine(GetDC(GetActiveWindow()), TabBreakpoints[i][0], TabBreakpoints[i][1],
-				TabBreakpoints[i + 1][0], TabBreakpoints[i + 1][1]);
+				TabBreakpoints[i + 1][0], TabBreakpoints[i + 1][1], black);
 		}
 		for (int i = 0; i < JunctionNum; i++) TabJunction[i]->DrawElem();
 		return;
@@ -63,8 +63,12 @@ void CWire::DrawElem(int Colour)
 			(TabBreakpoints[i][1] > 440 && TabBreakpoints[i + 1][1] > 440))
 		{
 			if (TabBreakpoints[i + 1][0] == TabBreakpoints[i][0] ||
-				TabBreakpoints[i + 1][1] == TabBreakpoints[i][1]) setcolor(FrameColour);	//todo
+				TabBreakpoints[i + 1][1] == TabBreakpoints[i][1]) {
+				//setcolor(FrameColour);	//todo
+				SetBkColor(GetDC(GetActiveWindow()),FrameColour);
+			}
 					   //caˆa linia jest na szarym polu
+
 		}
 		else//cz©˜† linii mo¾e by† na szarym polu
 		{
@@ -73,10 +77,10 @@ void CWire::DrawElem(int Colour)
 			{
 				//setcolor(FrameColour);	//todo
 				//setfillstyle(1,FrameColour);
-				drawLine(GetDC(GetActiveWindow()), 611, TabBreakpoints[i][1], TabBreakpoints[i][0], TabBreakpoints[i][1]);
+				drawLine(GetDC(GetActiveWindow()), 611, TabBreakpoints[i][1], TabBreakpoints[i][0], TabBreakpoints[i][1], black);
 				//setcolor(Colour);	//todo
 				//setfillstyle(1,Colour);
-				drawLine(GetDC(GetActiveWindow()), TabBreakpoints[i + 1][0], TabBreakpoints[i][1], 610, TabBreakpoints[i][1]);
+				drawLine(GetDC(GetActiveWindow()), TabBreakpoints[i + 1][0], TabBreakpoints[i][1], 610, TabBreakpoints[i][1], black);
 				continue;
 			}//linia w poziomie, pocz¥tkiem wychodzi na prawy szary pasek
 			if (TabBreakpoints[i + 1][0] > 610 &&
@@ -84,10 +88,10 @@ void CWire::DrawElem(int Colour)
 			{
 				//setcolor(FrameColour); //todo
 				//setfillstyle(1,FrameColour);
-				drawLine(GetDC(GetActiveWindow()), 611, TabBreakpoints[i][1], TabBreakpoints[i + 1][0], TabBreakpoints[i][1]);
+				drawLine(GetDC(GetActiveWindow()), 611, TabBreakpoints[i][1], TabBreakpoints[i + 1][0], TabBreakpoints[i][1], black);
 				//setcolor(Colour);	//todo
 				//setfillstyle(1,Colour);
-				drawLine(GetDC(GetActiveWindow()), TabBreakpoints[i][0], TabBreakpoints[i][1], 610, TabBreakpoints[i][1]);
+				drawLine(GetDC(GetActiveWindow()), TabBreakpoints[i][0], TabBreakpoints[i][1], 610, TabBreakpoints[i][1], black);
 				continue;
 			}//linia w poziomie, koäcem wychodzi na prawy szary pasek
 			if (TabBreakpoints[i][1] > 440 &&
@@ -95,10 +99,10 @@ void CWire::DrawElem(int Colour)
 			{
 				//setcolor(FrameColour); //todo
 				//setfillstyle(1,FrameColour);
-				drawLine(GetDC(GetActiveWindow()), TabBreakpoints[i][0], 441, TabBreakpoints[i][0], TabBreakpoints[i][1]);
+				drawLine(GetDC(GetActiveWindow()), TabBreakpoints[i][0], 441, TabBreakpoints[i][0], TabBreakpoints[i][1], black);
 				//setcolor(Colour);	//todo
 				//setfillstyle(1,Colour);
-				drawLine(GetDC(GetActiveWindow()), TabBreakpoints[i][0], TabBreakpoints[i + 1][1], TabBreakpoints[i][0], 440);
+				drawLine(GetDC(GetActiveWindow()), TabBreakpoints[i][0], TabBreakpoints[i + 1][1], TabBreakpoints[i][0], 440, black);
 				continue;
 			}//linia w pionie, pocz¥tkiem wychodzi na dolny szary pasek
 			if (TabBreakpoints[i + 1][1] > 440 &&
@@ -106,15 +110,15 @@ void CWire::DrawElem(int Colour)
 			{
 				//setcolor(FrameColour);
 				//setfillstyle(1,FrameColour);
-				drawLine(GetDC(GetActiveWindow()), TabBreakpoints[i][0], 441, TabBreakpoints[i][0], TabBreakpoints[i + 1][1]);
+				drawLine(GetDC(GetActiveWindow()), TabBreakpoints[i][0], 441, TabBreakpoints[i][0], TabBreakpoints[i + 1][1], black);
 				//setcolor(Colour);
 				//setfillstyle(1,Colour);
-				drawLine(GetDC(GetActiveWindow()), TabBreakpoints[i][0], TabBreakpoints[i][1], TabBreakpoints[i][0], 440);
+				drawLine(GetDC(GetActiveWindow()), TabBreakpoints[i][0], TabBreakpoints[i][1], TabBreakpoints[i][0], 440, black);
 				continue;
 			}//linia w pionie, koäcem wychodzi na dolny szary pasek
 		}
 		drawLine(GetDC(GetActiveWindow()), TabBreakpoints[i][0], TabBreakpoints[i][1],
-			TabBreakpoints[i + 1][0], TabBreakpoints[i + 1][1]);
+			TabBreakpoints[i + 1][0], TabBreakpoints[i + 1][1], black);
 		//setcolor(Colour);	//todo
 		//setfillstyle(1,Colour);
 	}
@@ -509,7 +513,8 @@ char CWire::FormatJunctions(CElement**TabElem, int NumOfElem)
 						{
 							TmpY = TabBreakpoints[MinIndex][1];
 							OK++;
-							putpixel(TmpX, TmpY, BLACK);	//todo
+							//putpixel(TmpX, TmpY, BLACK);	//todo
+							putPixel(GetDC(GetActiveWindow()), TmpX, TmpY, black);
 						}
 					}
 					else//linia w lewo

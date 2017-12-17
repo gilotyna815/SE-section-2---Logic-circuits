@@ -16,6 +16,7 @@ COutput::COutput(int X, int Y, int Colour)
 
 void COutput::DrawElem(int Colour)
 {
+	Color color = black;
 	//setcolor(FrameColour);	//todo
 	TextOut(GetDC(GetActiveWindow()), X1 + 17, Y1 + 10, L"?", 1);
 	TextOut(GetDC(GetActiveWindow()), X1 + 17, Y1 + 10, L"0", 1);
@@ -30,10 +31,15 @@ void COutput::DrawElem(int Colour)
 		case error:Colour = ErrorColour; break;
 		}
 	}
+	switch (Colour) {
+	case LowColour: color = blue;
+	case HighColour: color = red;
+	case ErrorColour: color = orange;
+	}
 	//setcolor(Colour);	//todo
 	//setfillstyle(1, Colour);	//todo
-	drawLine(GetDC(GetActiveWindow()), X1 + 1, Y1 + 8, X1 + 10, Y1 + 13);
-	drawLine(GetDC(GetActiveWindow()), X1 + 10, Y1 + 13, X1 + 1, Y1 + 18);
+	drawLine(GetDC(GetActiveWindow()), X1 + 1, Y1 + 8, X1 + 10, Y1 + 13, color);
+	drawLine(GetDC(GetActiveWindow()), X1 + 10, Y1 + 13, X1 + 1, Y1 + 18, color);
 	char Text[2];
 	switch (Output)
 	{

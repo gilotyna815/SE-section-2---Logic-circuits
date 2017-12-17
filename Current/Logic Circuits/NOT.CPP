@@ -29,12 +29,12 @@ void CNot::DrawElem(int Colour)
 		}
 	}
 	//setcolor(Colour);	//todo
-	drawLine(GetDC(GetActiveWindow()), X1 + 8, Y1 + 7, X1 + 8, Y1 + 22);//linia z lewej
-	drawLine(GetDC(GetActiveWindow()), X1 + 3, Y1 + 14, X1 + 8, Y1 + 14);//wej˜cie
-	drawLine(GetDC(GetActiveWindow()), X1 + 8, Y1 + 7, X1 + 17, Y1 + 14);//linia z g¢ry
-	drawLine(GetDC(GetActiveWindow()), X1 + 8, Y1 + 22, X1 + 17, Y1 + 14);//linia z doˆu
-	drawCircle(GetDC(GetActiveWindow()), X1 + 19, Y1 + 14, 2);//negacja
-	drawLine(GetDC(GetActiveWindow()), X1 + 21, Y1 + 14, X1 + 24, Y1 + 14);//wyj˜cie
+	drawLine(GetDC(GetActiveWindow()), X1 + 8, Y1 + 7, X1 + 8, Y1 + 22, black);//linia z lewej
+	drawLine(GetDC(GetActiveWindow()), X1 + 3, Y1 + 14, X1 + 8, Y1 + 14, black);//wej˜cie
+	drawLine(GetDC(GetActiveWindow()), X1 + 8, Y1 + 7, X1 + 17, Y1 + 14, black);//linia z g¢ry
+	drawLine(GetDC(GetActiveWindow()), X1 + 8, Y1 + 22, X1 + 17, Y1 + 14, black);//linia z doˆu
+	drawCircle(GetDC(GetActiveWindow()), X1 + 19, Y1 + 14, 2, black);//negacja
+	drawLine(GetDC(GetActiveWindow()), X1 + 21, Y1 + 14, X1 + 24, Y1 + 14, black);//wyj˜cie
 }
 
 TOutput CNot::GetOutput(int AskElemNum, int MaxNum)

@@ -29,11 +29,11 @@ void COr::DrawElem(int Colour)
 		}
 	}
 	//setcolor(Colour);	//todo
-	drawArc(GetDC(GetActiveWindow()), X1 + 3, Y1 + 14, 315, 54, 9);	//�uk z lewej
-	drawLine(GetDC(GetActiveWindow()), X1 + 3, Y1 + 12, X1 + 10, Y1 + 12);	//we g.
-	drawLine(GetDC(GetActiveWindow()), X1 + 3, Y1 + 17, X1 + 10, Y1 + 17);	//we d.
-	drawArc(GetDC(GetActiveWindow()), X1 + 8, Y1 + 14, 270, 90, 8);	//�uk z prawej
-	drawLine(GetDC(GetActiveWindow()), X1 + 17, Y1 + 14, X1 + 24, Y1 + 14);
+	drawArc(GetDC(GetActiveWindow()), X1 + 3, Y1 + 14, 315, 54, 9, black);	//�uk z lewej
+	drawLine(GetDC(GetActiveWindow()), X1 + 3, Y1 + 12, X1 + 10, Y1 + 12, black);	//we g.
+	drawLine(GetDC(GetActiveWindow()), X1 + 3, Y1 + 17, X1 + 10, Y1 + 17, black);	//we d.
+	drawArc(GetDC(GetActiveWindow()), X1 + 8, Y1 + 14, 270, 90, 8, black);	//�uk z prawej
+	drawLine(GetDC(GetActiveWindow()), X1 + 17, Y1 + 14, X1 + 24, Y1 + 14, black);
 }
 
 TOutput COr::GetOutput(int AskElemNum, int MaxNum)
