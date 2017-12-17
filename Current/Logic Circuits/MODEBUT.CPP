@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "modebut.h"
 #include "gate.h"
 #include "and.h"
@@ -8,6 +9,9 @@
 #include "xor.h"
 #include "output.h"
 #include "wire.h"
+
+
+
 
 CModeButton::CModeButton(TElementType ButtonType, int X1, int Y1, int X2, int Y2)
 {

@@ -1,5 +1,9 @@
+#include "stdafx.h"
 #include "junction.h"
 #include "gate.h"
+
+
+
 
 CJunction::CJunction(int X, int Y, int Colour)
 {
@@ -17,7 +21,7 @@ CJunction::CJunction(int X, int Y, int Colour)
 
 void CJunction::DrawElem(int Colour)
 {
-	Color color = black;
+	Gdiplus::Color color = black;
 	if (Colour == 0)
 	{
 		switch (Output)

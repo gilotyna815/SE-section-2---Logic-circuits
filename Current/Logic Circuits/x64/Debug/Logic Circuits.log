@@ -1,1 +1,10 @@
-﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.Cpp.Platform.targets(57,5): error MSB8020: The build tools for v141 (Platform Toolset = 'v141') cannot be found. To build using the v141 build tools, please install v141 build tools.  Alternatively, you may upgrade to the current Visual Studio tools by selecting the Project menu or right-click the solution, and then selecting "Retarget solution".
+﻿  GATE.CPP
+c:\users\quasko\downloads\se-section-2---logic-circuits-master\current\logic circuits\gate.cpp(443): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\ucrt\string.h(136): note: zobacz deklarację „strcpy”
+c:\users\quasko\downloads\se-section-2---logic-circuits-master\current\logic circuits\gate.cpp(446): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\ucrt\string.h(93): note: zobacz deklarację „strcat”
+c:\users\quasko\downloads\se-section-2---logic-circuits-master\current\logic circuits\gate.cpp(480): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\ucrt\string.h(93): note: zobacz deklarację „strcat”
+c:\users\quasko\downloads\se-section-2---logic-circuits-master\current\logic circuits\gate.cpp(479): warning C4700: użycie niezainicjowanej zmiennej lokalnej "i"
+  Logic Circuits.vcxproj -> C:\Users\Quasko\Downloads\SE-section-2---Logic-circuits-master\Current\x64\Debug\Logic Circuits.exe
+  Logic Circuits.vcxproj -> C:\Users\Quasko\Downloads\SE-section-2---Logic-circuits-master\Current\x64\Debug\Logic Circuits.pdb (Partial PDB)

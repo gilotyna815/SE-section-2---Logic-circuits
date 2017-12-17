@@ -1,5 +1,9 @@
+#include "stdafx.h"
 #include "output.h"
 #include "gate.h"
+
+
+
 
 COutput::COutput(int X, int Y, int Colour)
 {
@@ -16,7 +20,7 @@ COutput::COutput(int X, int Y, int Colour)
 
 void COutput::DrawElem(int Colour)
 {
-	Color color = black;
+	Gdiplus::Color color = black;
 	//setcolor(FrameColour);	//todo
 	TextOut(GetDC(GetActiveWindow()), X1 + 17, Y1 + 10, L"?", 1);
 	TextOut(GetDC(GetActiveWindow()), X1 + 17, Y1 + 10, L"0", 1);

@@ -23,7 +23,7 @@
     <ProjectGuid>{84B4D378-A8B6-43AE-A5CB-08F3BA48D74E}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>LogicCircuits</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -183,7 +183,9 @@
     <ClCompile Include="OR.CPP" />
     <ClCompile Include="OUTPUT.CPP" />
     <ClCompile Include="SMALLWIN.CPP" />
-    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="WINDOW.cpp" />
     <ClCompile Include="WIRE.CPP" />
     <ClCompile Include="XOR.CPP" />

@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "window.h"
 #include "smallwin.h"
 #include "constbus.h"
@@ -13,6 +14,9 @@
 #include "xor.h"
 #include "output.h"
 #include "wire.h"
+
+
+
 
 CWindow::CWindow(HDC currentWin, int Number, char IsPrev, char IsNext, char NewPossib, char IsNew)
 {
@@ -48,45 +52,45 @@ CWindow::CWindow(HDC currentWin, int Number, char IsPrev, char IsNext, char NewP
 	TabBut[7] = new CMenuButton("Info", 520, 22, 580, 39);
 	TabBut[8] = new CMenuButton("Move", 170, 42, 370, 59);
 	//stworzenie przycisk¢w menu
-	unsigned ImageSize = imagesize(2, 61, 28, 90);//rozmiar jest staˆy
-	for (int i = 0; i < ButNum - MenuButNum; i++) ImageTab[i] = new[ImageSize];
+	///unsigned ImageSize = imagesize(2, 61, 28, 90);//rozmiar jest staˆy
+	///for (int i = 0; i < ButNum - MenuButNum; i++) ImageTab[i] = new[ImageSize];
 	TabBut[MenuButNum] = new CModeButton(and, 2, 61, 28, 90);
 	TabBut[MenuButNum]->DrawButton();
-	getimage(2, 61, 28, 90, ImageTab[0]);
+	///getimage(2, 61, 28, 90, ImageTab[0]);
 	TabBut[MenuButNum + 1] = new CModeButton(or , 2, 101, 28, 130);
 	TabBut[MenuButNum + 1]->DrawButton();
-	getimage(2, 101, 28, 130, ImageTab[1]);
+	///getimage(2, 101, 28, 130, ImageTab[1]);
 	TabBut[MenuButNum + 2] = new CModeButton(not, 2, 141, 28, 170);
 	TabBut[MenuButNum + 2]->DrawButton();
-	getimage(2, 141, 28, 170, ImageTab[2]);
+	///getimage(2, 141, 28, 170, ImageTab[2]);
 	TabBut[MenuButNum + 3] = new CModeButton(nand, 2, 181, 28, 210);
 	TabBut[MenuButNum + 3]->DrawButton();
-	getimage(2, 181, 28, 210, ImageTab[3]);
+	///getimage(2, 181, 28, 210, ImageTab[3]);
 	TabBut[MenuButNum + 4] = new CModeButton(nor, 2, 221, 28, 250);
 	TabBut[MenuButNum + 4]->DrawButton();
-	getimage(2, 221, 28, 250, ImageTab[4]);
+	///getimage(2, 221, 28, 250, ImageTab[4]);
 	TabBut[MenuButNum + 5] = new CModeButton(xor, 2, 261, 28, 290);
 	TabBut[MenuButNum + 5]->DrawButton();
-	getimage(2, 261, 28, 290, ImageTab[5]);
+	///getimage(2, 261, 28, 290, ImageTab[5]);
 	TabBut[MenuButNum + 6] = new CModeButton(output, 2, 301, 28, 330);
 	TabBut[MenuButNum + 6]->DrawButton();
-	getimage(2, 301, 28, 330, ImageTab[6]);
+	///getimage(2, 301, 28, 330, ImageTab[6]);
 	//setfillstyle(1,FrameColour);
-	ImageSize = imagesize(100, 155, 168, 170);
-	ImageTab[NumberOfImages - 1] = new[ImageSize];
+	///ImageSize = imagesize(100, 155, 168, 170);
+	///ImageTab[NumberOfImages - 1] = new[ImageSize];
 	//bar(100,155,168,170);
 	drawBar(GetDC(GetActiveWindow()), 100, 155, 168, 170, black);
 	//outtextxy(107,160,"Linking");
 	TextOut(GetDC(GetActiveWindow()), 107, 160, L"Linking", 7);
-	getimage(100, 155, 168, 170, ImageTab[NumberOfImages - 1]);
+	///getimage(100, 155, 168, 170, ImageTab[NumberOfImages - 1]);
 	//ikona ˆ¥czenia element¢w jest ostatnia w tablicy
 	for (int i = 0; i < ButNum - MenuButNum; i++)
 	{
-		putimage(0, 0, ImageTab[i], 4);
-		getimage(0, 0, 26, 29, ImageTab[i]);
+		///putimage(0, 0, ImageTab[i], 4);
+		///getimage(0, 0, 26, 29, ImageTab[i]);
 	}//negacja ikon element¢w
-	putimage(0, 0, ImageTab[NumberOfImages - 1], 4);
-	getimage(0, 0, 68, 15, ImageTab[NumberOfImages - 1]);
+	///putimage(0, 0, ImageTab[NumberOfImages - 1], 4);
+	///getimage(0, 0, 68, 15, ImageTab[NumberOfImages - 1]);
 	//setactivepage(0);
 	if (!IsNew)
 	{
@@ -269,7 +273,7 @@ void CWindow::CheckElements(int X, int Y)	//cursor functionality
 				int Y1 = Y + YMove;
 				//reg.r_ax=0x2;
 				//intr(0x33,&reg);//schowanie kursora
-				putimage(X1, Y1, ImageTab[ImageNum], 1);
+				///putimage(X1, Y1, ImageTab[ImageNum], 1);
 				//reg.r_ax=0x1;
 				//intr(0x33,&reg);//pokazanie kursora
 				do
@@ -284,11 +288,11 @@ void CWindow::CheckElements(int X, int Y)	//cursor functionality
 						else YMove = 10;
 						//reg.r_ax=0x2;
 						//intr(0x33,&reg);//schowanie kursora
-						putimage(X1, Y1, ImageTab[ImageNum], 1);
+						///putimage(X1, Y1, ImageTab[ImageNum], 1);
 						//skasowanie ikony
 						X1 = x + XMove;
 						Y1 = y + YMove;
-						putimage(X1, Y1, ImageTab[ImageNum], 1);
+						///putimage(X1, Y1, ImageTab[ImageNum], 1);
 						//narysowanie ikony w nowym poˆo¾eniu
 					//reg.r_ax=0x1;
 					//intr(0x33,&reg);//pokazanie kursora
@@ -296,7 +300,7 @@ void CWindow::CheckElements(int X, int Y)	//cursor functionality
 				} while ((GetKeyState(VK_LBUTTON) & 0x100));  //?????
 				//reg.r_ax=0x2;
 				//intr(0x33,&reg);//schowanie kursora
-				putimage(X1, Y1, ImageTab[ImageNum], 1);
+				///putimage(X1, Y1, ImageTab[ImageNum], 1);
 				//skasowanie ikony
 			//reg.r_ax=0x1;
 			//intr(0x33,&reg);//pokazanie kursora
@@ -670,15 +674,15 @@ char CWindow::DragElement(int ImageNum, int ElemNum)		//cursor
 		}
 		if (x != X || y != Y)
 		{
-			putimage(X, Y, ImageTab[ImageNum], 1);
+			///putimage(X, Y, ImageTab[ImageNum], 1);
 			//zmazanie elementu
-			putimage(x, y, ImageTab[ImageNum], 1);
+			///putimage(x, y, ImageTab[ImageNum], 1);
 			//narysowanie elementu w nowym poˆo¾eniu
 			X = x;
 			Y = y;
 		}
 	} while ((GetKeyState(VK_LBUTTON) & 0x100));//????
-	putimage(x, y, ImageTab[ImageNum], 1);
+	///putimage(x, y, ImageTab[ImageNum], 1);
 	if (x < 28 && y < 430 && y>370) DeleteElem(ElemNum);
 	else
 		if (!TabElem[ElemNum]->Move(x, y, TabElem, NumOfElem))

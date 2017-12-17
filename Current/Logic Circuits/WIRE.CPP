@@ -1,6 +1,10 @@
+#include "stdafx.h"
 #include "wire.h"
 #include "gate.h"
-#include "stdafx.h"
+
+
+
+
 CWire::CWire(int X, int Y, int Colour, char FromJunction, CElement*PrevWire)
 {
 	X1 = X;
@@ -13,8 +17,8 @@ CWire::CWire(int X, int Y, int Colour, char FromJunction, CElement*PrevWire)
 	TabBreakpoints[0][1] = Y1;
 	TabBreakpoints[1][0] = X2;
 	TabBreakpoints[1][1] = Y2;
-	InNum = 1;
-	OutNum = 1;
+	int InNum = 1;
+	int OutNum = 1;
 	for (int i = 0; i < InNum; i++)
 		TabPrevElem[i] = NULL;
 	for (int i = 0; i < OutNum; i++)

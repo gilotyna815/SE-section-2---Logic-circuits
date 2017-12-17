@@ -1,5 +1,9 @@
+#include "stdafx.h"
 #include "or.h"
 #include "gate.h"
+
+
+
 
 COr::COr(int X, int Y, int Colour)
 {

@@ -1,5 +1,9 @@
+#include "stdafx.h"
 #include "inbus.h"
 #include "gate.h"
+
+
+
 
 CInBus::CInBus(int X, int Y, char Name)
 {

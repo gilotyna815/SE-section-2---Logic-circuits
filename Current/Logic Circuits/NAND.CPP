@@ -1,5 +1,9 @@
+#include "stdafx.h"
 #include "nand.h"
 #include "gate.h"
+
+
+
 
 CNand::CNand(int X, int Y, int Colour)
 {

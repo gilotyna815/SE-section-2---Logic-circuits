@@ -1,5 +1,9 @@
+#include "stdafx.h"
 #include "nor.h"
 #include "gate.h"
+
+
+
 
 CNor::CNor(int X, int Y, int Colour)
 {

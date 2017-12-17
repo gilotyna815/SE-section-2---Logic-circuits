@@ -1,7 +1,11 @@
+#include "stdafx.h"
 #include "window.h"
 #include "smallwin.h"
 #include "menubut.h"
 #include "modebut.h"
+
+
+
 
 CSmallWindow::CSmallWindow(int X1, int Y1, int X2, int Y2, char*HeadingText,
 	char**ConstText, char Reading, int ButtonNum,

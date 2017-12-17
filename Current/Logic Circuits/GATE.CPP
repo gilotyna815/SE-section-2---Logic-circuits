@@ -7,7 +7,7 @@
 #include <windows.h>
 #include <objidl.h>
 #include <gdiplus.h>
-using namespace Gdiplus;
+
 #pragma comment (lib,"Gdiplus.lib")
 
 
@@ -19,6 +19,14 @@ using namespace Gdiplus;
 HINSTANCE hInst;                                // bie��ce wyst�pienie
 WCHAR szTitle[MAX_LOADSTRING];                  // Tekst paska tytu�u
 WCHAR szWindowClass[MAX_LOADSTRING];            // nazwa klasy okna g��wnego
+
+
+extern Gdiplus::Color black(255, 0, 0, 0);
+extern Gdiplus::Color red(255, 255, 0, 0);
+extern Gdiplus::Color blue(255, 0, 0, 255);
+extern Gdiplus::Color gray(255, 169, 169, 169);
+extern Gdiplus::Color orange(255, 255, 165, 0);
+extern Gdiplus::Color white(255, 255, 255, 255);
 
 // Przeka� dalej deklaracje funkcji do��czonych w tym module kodu:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -234,54 +242,54 @@ INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 	return 1;
 }*/
 //put pixel at (x,y)
-void putPixel(HDC hdc, int x, int y, Color color)
+void putPixel(HDC hdc, int x, int y, Gdiplus::Color color)
 {
-	Graphics graphics(hdc);
-	Pen pen(color, 1.0f); //Alpha(transparency), Red, Green, Blue, penWidth
+	Gdiplus::Graphics graphics(hdc);
+	Gdiplus::Pen pen(color, 1.0f); //Alpha(transparency), Red, Green, Blue, penWidth
 	graphics.DrawLine(&pen, x, y, x + 1, y + 1);
 
 }
 //draws a pie centered at (x,y) with radius given by width. The pie travels from startAngle to sweepAngle
-void drawPie(HDC hdc, int x, int y, float startAngle, float sweepAngle, int width, Color color) {
+void drawPie(HDC hdc, int x, int y, float startAngle, float sweepAngle, int width, Gdiplus::Color color) {
 
 	sweepAngle = sweepAngle * 2;
 	y = (y - width);
 	x = (x - width);
 	width = width * 2;
 	int height = width;
-	Graphics graphics(hdc);
+	Gdiplus::Graphics graphics(hdc);
 	// Draw the pie.
-	Pen pen(color, 1.0f); //Alpha(transparency), Red, Green, Blue, penWidth
+	Gdiplus::Pen pen(color, 1.0f); //Alpha(transparency), Red, Green, Blue, penWidth
 	graphics.DrawPie(&pen, x, y, width, height, startAngle, sweepAngle);
 }
 //draws an arc centered at (x,y) with radius given by width. The arc travels from startAngle to sweepAngle
-void drawArc(HDC hdc, int x, int y, float startAngle, float sweepAngle, int width, Color color) {
+void drawArc(HDC hdc, int x, int y, float startAngle, float sweepAngle, int width, Gdiplus::Color color) {
 
 	sweepAngle = sweepAngle * 2;
 	y = (y - width);
 	x = (x - width);
 	width = width * 2;
 	int height = width;
-	Graphics graphics(hdc);
+	Gdiplus::Graphics graphics(hdc);
 	// Draw the pie.
-	Pen pen(color, 1.0f); //Alpha(transparency), Red, Green, Blue, penWidth
+	Gdiplus::Pen pen(color, 1.0f); //Alpha(transparency), Red, Green, Blue, penWidth
 						  //y = (y - 4);
 	graphics.DrawArc(&pen, x, y, width, height, startAngle, sweepAngle);
 }
 //draws line from point (x1,y1) to point (x2,y2)
-void drawLine(HDC hdc, int x1, int y1, int x2, int y2, Color color)
+void drawLine(HDC hdc, int x1, int y1, int x2, int y2, Gdiplus::Color color)
 {
-	Graphics graphics(hdc);
-	Pen pen(color, 5.0f);
+	Gdiplus::Graphics graphics(hdc);
+	Gdiplus::Pen pen(color, 5.0f);
 	graphics.DrawLine(&pen, x1, y1, x2, y2);
 }
 //draws basket with left upper corner coordinate (X,Y)
 void drawBasket(HDC hdc, int X, int Y)
 {
-	Graphics graphics(hdc);
-	Pen basketPen(Color(255, 0, 0, 255), 1.0f); //Alpha(transparency), Red, Green, Blue, penWidth
-	Pen squarePen(Color(255, 0, 0, 0), 1.0f);
-	Pen fatPen(Color(255, 0, 0, 255), 3.0f);
+	Gdiplus::Graphics graphics(hdc);
+	Gdiplus::Pen basketPen(Gdiplus::Color(255, 0, 0, 255), 1.0f); //Alpha(transparency), Red, Green, Blue, penWidth
+	Gdiplus::Pen squarePen(Gdiplus::Color(255, 0, 0, 0), 1.0f);
+	Gdiplus::Pen fatPen(Gdiplus::Color(255, 0, 0, 255), 3.0f);
 	//Square containing basket
 	graphics.DrawLine(&squarePen, X, Y, X, Y + 30);
 	graphics.DrawLine(&squarePen, X, Y + 30, X + 26, Y + 30);
@@ -316,24 +324,24 @@ void drawImage(HDC hdc, int X, int Y, HDC hdcMem, HGDIOBJ oldBitmap, BITMAP bitm
 //draws a rectangle with: 
 //left upper corner coordinate (x1,y1)
 //right bottom corner coordinate (x2, y2)
-void drawBar(HDC hdc, int x1, int y1, int x2, int y2, Color color) {
+void drawBar(HDC hdc, int x1, int y1, int x2, int y2, Gdiplus::Color color) {
 	int width = x2 - x1;
 	int height = y2 - y1;
-	Graphics graphics(hdc);
+	Gdiplus::Graphics graphics(hdc);
 	//Pen pen(Color(100, 0, 0, 0), 5.0f);
-	SolidBrush blackBrush(color);
+	Gdiplus::SolidBrush blackBrush(color);
 	//graphics.DrawRectangle(&pen, x1, y1, width, height);
 	graphics.FillRectangle(&blackBrush, x1, y1, width, height);
 }
 
-void drawCircle(HDC hdc, int x, int y, int radius, Color color)
+void drawCircle(HDC hdc, int x, int y, int radius, Gdiplus::Color color)
 {
 	int X1, Y1;
 	X1 = x - radius;
 	Y1 = y - radius;
 
-	Graphics graphics(hdc);
-	Pen pen(color, 1.0f); //Alpha(transparency), Red, Green, Blue, penWidth
+	Gdiplus::Graphics graphics(hdc);
+	Gdiplus::Pen pen(color, 1.0f); //Alpha(transparency), Red, Green, Blue, penWidth
 	graphics.DrawEllipse(&pen, X1, Y1, 2 * radius, 2 * radius);
 
 }

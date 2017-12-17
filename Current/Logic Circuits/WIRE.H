@@ -6,7 +6,7 @@
 
 class CWire :public CElement
 {
-	int JunctionNum;
+	int JunctionNum, X1, X2, Y1, Y2;
 	CJunction*TabJunction[MaxJunctionNum];
 	int BreakpointsNum;
 	int TabBreakpoints[MaxBreakpointsNum][2];

@@ -1,5 +1,9 @@
+#include "stdafx.h"
 #include "menubut.h"
 #include "gate.h"
+
+
+
 
 CMenuButton::CMenuButton(char*Text, int X1, int Y1, int X2, int Y2)
 {

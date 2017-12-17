@@ -1,5 +1,9 @@
+#include "stdafx.h"
 #include "not.h"
 #include "gate.h"
+
+
+
 
 CNot::CNot(int X, int Y, int Colour)
 {

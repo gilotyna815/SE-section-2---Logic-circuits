@@ -1,5 +1,8 @@
-#include "constbus.h"
+#include "stdafx.h"
 #include "gate.h"
+#include "constbus.h"
+
+
 
 CConstBus::CConstBus(int X, int Y, int Type)
 {
@@ -34,8 +37,8 @@ void CConstBus::DrawElem(int Colour)
 		}
 	}
 	//setcolor(Colour);	 //todo
-	drawLine(GetDC(GetActiveWindow()), X1, Y2 - 5, X2 - 10, Y2 - 5);
-	drawLine(GetDC(GetActiveWindow()), X1, Y2 - 4, X2 - 10, Y2 - 4);
+	drawLine(GetDC(GetActiveWindow()), X1, Y2 - 5, X2 - 10, Y2 - 5,Colour);
+	drawLine(GetDC(GetActiveWindow()), X1, Y2 - 4, X2 - 10, Y2 - 4,Colour);
 	char Text[2];
 	switch (Output)
 	{

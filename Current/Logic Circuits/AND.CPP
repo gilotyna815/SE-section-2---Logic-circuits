@@ -1,4 +1,7 @@
+#include "stdafx.h"
 #include "and.h"
+
+
 
 CAnd::CAnd(int X, int Y, int Colour)
 {

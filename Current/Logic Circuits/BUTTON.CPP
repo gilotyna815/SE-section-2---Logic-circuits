@@ -1,5 +1,7 @@
+#include "stdafx.h"
 #include "button.h"
 #include "gate.h"
+
 
 CButton::~CButton()
 {}
