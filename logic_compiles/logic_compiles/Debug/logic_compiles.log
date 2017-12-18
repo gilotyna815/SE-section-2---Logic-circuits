@@ -1,0 +1,7 @@
+﻿  Źródło.cpp
+c:\users\xiens\source\repos\logic_compiles\logic_compiles\źródło.cpp(145): warning C4101: "hwnd": lokalna zmienna, do której nie istnieje odwołanie
+c:\users\xiens\source\repos\logic_compiles\logic_compiles\źródło.cpp(117): warning C4101: "hdcMem": lokalna zmienna, do której nie istnieje odwołanie
+c:\users\xiens\source\repos\logic_compiles\logic_compiles\źródło.cpp(118): warning C4101: "oldBitmap": lokalna zmienna, do której nie istnieje odwołanie
+c:\users\xiens\source\repos\logic_compiles\logic_compiles\źródło.cpp(116): warning C4101: "bitmap": lokalna zmienna, do której nie istnieje odwołanie
+c:\users\xiens\source\repos\logic_compiles\logic_compiles\źródło.cpp(150): warning C4715: "WndProc”: niewszystkie ścieżki kodu zwracają wartość
+  logic_compiles.vcxproj -> C:\Users\xiens\source\repos\logic_compiles\Debug\logic_compiles.exe
